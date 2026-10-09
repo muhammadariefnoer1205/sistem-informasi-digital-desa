@@ -1,64 +1,34 @@
-import { useMemo, useState } from 'react';
-import Sidebar from './components/Sidebar';
-import Header from './components/Header';
-import SubHeader from './components/SubHeader';
-import StatsGrid from './components/StatsGrid';
-import Toolbar from './components/Toolbar';
-import RegistryTable from './components/RegistryTable';
-import BukuMutasi from './components/BukuMutasi';
-import BansosPanel from './components/BansosPanel';
-import { WARGAS } from './data/warga';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import AppLayout from './components/AppLayout';
+import KependudukanPage from './pages/KependudukanPage';
+import LayananWargaPage from './pages/LayananWargaPage';
 
-function App() {
-  const [query, setQuery] = useState('');
-  const [dusun, setDusun] = useState('all');
-  const [rw, setRw] = useState('all');
-  const [category, setCategory] = useState('semua');
-  const [masked, setMasked] = useState(true);
-
-  const rows = useMemo(() => {
-    const q = query.toLowerCase().trim();
-    return WARGAS.filter((w) => {
-      if (dusun !== 'all' && w.dusun !== dusun) return false;
-      if (rw !== 'all' && w.rw !== rw) return false;
-      if (category === 'bansos' && w.kategori !== 'bansos') return false;
-      if (category === 'lansia' && w.kategori !== 'lansia') return false;
-      if (category === 'disabilitas' && w.kategori !== 'disabilitas') return false;
-      if (category === 'mutasi' && w.kategori !== 'mutasi') return false;
-      if (!q) return true;
-      const hay = `${w.nik} ${w.kk} ${w.nama} ${w.alamat}`.toLowerCase();
-      return hay.includes(q);
-    });
-  }, [query, dusun, rw, category]);
-
+function ComingSoon({ title }) {
   return (
-    <div className="bg-background text-on-surface min-h-screen">
-      <Sidebar />
-      <div className="pl-0 lg:pl-64">
-        <Header query={query} onQuery={setQuery} />
-        <div className="pt-16">
-          <SubHeader />
-          <main className="w-full px-space-lg py-space-md bg-background">
-            <div className="flex flex-col w-full gap-space-lg">
-              <StatsGrid />
-              <Toolbar
-                query={query} setQuery={setQuery}
-                dusun={dusun} setDusun={setDusun}
-                rw={rw} setRw={setRw}
-                category={category} setCategory={setCategory}
-              />
-              <RegistryTable rows={rows} masked={masked} onToggleMask={() => setMasked((m) => !m)} />
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
-                <BukuMutasi />
-                <BansosPanel />
-              </div>
-            </div>
-          </main>
-        </div>
-      </div>
+    <div className="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col gap-space-sm">
+      <span className="text-[11px] uppercase tracking-wider text-primary font-bold">Modul SatuDesa</span>
+      <h1 className="text-[22px] font-semibold text-on-surface">{title}</h1>
+      <p className="text-[14px] text-on-surface-variant">Halaman ini mengikuti desain berikutnya. Navigasi kembali tersedia melalui sidebar.</p>
     </div>
   );
 }
 
+function App() {
+  return (
+    <HashRouter>
+      <AppLayout>
+        <Routes>
+          <Route path="/" element={<KependudukanPage />} />
+          <Route path="/Layanan-Warga" element={<LayananWargaPage />} />
+          <Route path="/Transparansi-Portal" element={<ComingSoon title="Transparansi & Portal Publik" />} />
+          <Route path="/Keamanan-Audit" element={<ComingSoon title="Keamanan & Audit Trail" />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </AppLayout>
+    </HashRouter>
+  );
+}
+
 export default App;
+
 

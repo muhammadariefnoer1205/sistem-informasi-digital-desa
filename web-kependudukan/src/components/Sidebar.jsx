@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { NAV_ITEMS } from '../data/warga';
 
 export default function Sidebar() {
@@ -21,19 +22,21 @@ export default function Sidebar() {
           </div>
           <nav className="flex flex-col gap-space-xs">
             {NAV_ITEMS.map((item) => (
-              <a
+              <NavLink
                 key={item.label}
-                href="#"
-                onClick={(e) => e.preventDefault()}
-                className={`flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-[13px] font-semibold transition-colors ${
-                  item.active
-                    ? 'bg-primary-container text-on-primary-container'
-                    : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
-                }`}
+                to={item.to}
+                end={item.to === '/'}
+                className={({ isActive }) =>
+                  `flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-[13px] font-semibold transition-colors ${
+                    isActive
+                      ? 'bg-primary-container text-on-primary-container'
+                      : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface'
+                  }`
+                }
               >
                 <span className="material-symbols-outlined text-[20px]">{item.icon}</span>
                 <span>{item.label}</span>
-              </a>
+              </NavLink>
             ))}
           </nav>
         </div>
@@ -48,3 +51,4 @@ export default function Sidebar() {
     </aside>
   );
 }
+

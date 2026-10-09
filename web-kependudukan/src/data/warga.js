@@ -154,8 +154,8 @@ export const MUTATION_QUEUE = [
 ];
 
 export const NAV_ITEMS = [
-  { icon: 'groups', label: 'Kependudukan & Mutasi', active: true },
-  { icon: 'mark_email_unread', label: 'Layanan Warga (E-Surat)', active: false },
-  { icon: 'public', label: 'Transparansi & Portal', active: false },
-  { icon: 'verified_user', label: 'Keamanan & Audit Trail', active: false },
+  { icon: 'groups', label: 'Kependudukan & Mutasi', to: '/' },
+  { icon: 'mark_email_unread', label: 'Layanan Warga (E-Surat)', to: '/Layanan-Warga' },
+  { icon: 'public', label: 'Transparansi & Portal', to: '/Transparansi-Portal' },
+  { icon: 'verified_user', label: 'Keamanan & Audit Trail', to: '/Keamanan-Audit' },
 ];
