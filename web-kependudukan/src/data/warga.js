@@ -156,6 +156,6 @@ export const MUTATION_QUEUE = [
 export const NAV_ITEMS = [
   { icon: 'groups', label: 'Kependudukan & Mutasi', to: '/' },
   { icon: 'mark_email_unread', label: 'Layanan Warga (E-Surat)', to: '/Layanan-Warga' },
-  { icon: 'public', label: 'Transparansi & Portal', to: '/Transparansi-Portal' },
+  { icon: 'public', label: 'Transparansi & Portal', to: '/Transparansi-&-Portal' },
   { icon: 'verified_user', label: 'Keamanan & Audit Trail', to: '/Keamanan-Audit' },
 ];
