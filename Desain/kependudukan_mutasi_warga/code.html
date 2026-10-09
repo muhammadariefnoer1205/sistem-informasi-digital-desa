@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline-variant": "#c0cab6", "on-error-container": "#93000a", "on-secondary": "#ffffff", "surface-variant": "#ceebbd", "on-error": "#ffffff", "on-background": "#0b2004", "on-secondary-fixed": "#052100", "surface": "#edffdf", "tertiary-fixed": "#f5e0bc", "on-surface-variant": "#40493b", "inverse-primary": "#85db69", "on-tertiary-container": "#ffeccd", "tertiary": "#605237", "tertiary-container": "#7a6a4d", "secondary-fixed-dim": "#8bda6a", "inverse-on-surface": "#dcf9ca", "surface-bright": "#edffdf", "surface-container-low": "#dffccd", "surface-dim": "#c6e3b5", "on-primary-fixed": "#032100", "on-primary-fixed-variant": "#115300", "error-container": "#ffdad6", "primary-fixed": "#a0f882", "surface-container-lowest": "#ffffff", "on-surface": "#0b2004", "tertiary-fixed-dim": "#d8c4a2", "surface-container": "#daf7c8", "on-tertiary-fixed": "#241a05", "primary": "#156100", "on-primary-container": "#c1ffa8", "on-secondary-fixed-variant": "#165200", "on-tertiary": "#ffffff", "surface-container-high": "#d4f1c2", "surface-tint": "#196d00", "surface-container-highest": "#ceebbd", "primary-fixed-dim": "#85db69", "background": "#edffdf", "on-tertiary-fixed-variant": "#52452b", "on-primary": "#ffffff", "error": "#ba1a1a", "secondary-fixed": "#a5f783", "on-secondary-container": "#29730c", "secondary-container": "#a5f783", "outline": "#707a69", "secondary": "#226d03", "primary-container": "#2a7c13", "inverse-surface": "#203616" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-mobile": "1rem", "space-xl": "2.5rem", "gutter-mobile": "0.75rem", "gutter": "1.25rem", "space-md": "1rem", "margin": "2rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "space-xs": "0.25rem" }, "fontFamily": { "data-tabular-md": [ "JetBrains Mono" ], "label-md": [ "Plus Jakarta Sans" ], "data-tabular-lg": [ "JetBrains Mono" ], "headline-lg": [ "Plus Jakarta Sans" ], "body-lg": [ "Plus Jakarta Sans" ], "body-md": [ "Plus Jakarta Sans" ], "headline-md": [ "Plus Jakarta Sans" ], "display-lg": [ "Plus Jakarta Sans" ], "headline-xl": [ "Plus Jakarta Sans" ], "body-sm": [ "Plus Jakarta Sans" ], "label-sm": [ "Plus Jakarta Sans" ], "data-tabular-sm": [ "JetBrains Mono" ] }, "fontSize": { "data-tabular-md": [ "13px", { "lineHeight": "18px", "fontWeight": "500" } ], "label-md": [ "13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "data-tabular-lg": [ "20px", { "lineHeight": "26px", "fontWeight": "600" } ], "headline-lg": [ "22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-md": [ "18px", { "lineHeight": "24px", "fontWeight": "600" } ], "display-lg": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-xl": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "body-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "label-sm": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" } ], "data-tabular-sm": [ "11px", { "lineHeight": "16px", "fontWeight": "400" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container"><img alt="Logo SatuDesa" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VtYWUwClBn7EGj551-h9IrOw0zlPvSgUMvRRRYCvt5hhUb4wUwYy6624bPDo3_3dyXHpC8u_o7sY5bvFUMPyWBZJ6vwDCrSZh8_Gr2Vtg0S0KIhNyHv8lY8bjcp9bce0bMdj5RK4CHijy24ik7xKjeh2kDmYub09pTk7w5B6Xp4Y_4JmCr40NgKtrlSZIQ0KGSx2XagahL6J0WKx33B76ZLDfbMGHkvfQBpW-xv9Mad8HYyopUsM3jnA"/><div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary leading-tight">SatuDesa</span><span class="font-label-sm text-label-sm text-on-surface-variant">Tata Kelola Digital</span></div></div><div class="p-space-sm"><div class="px-space-sm py-space-xs mb-space-xs font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Modul Utama</div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="kependudukan-dan-mutasi" href="#"><span class="material-symbols-outlined text-[20px]">groups</span><span>Kependudukan &amp; Mutasi</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="layanan-warga-e-surat" href="#"><span class="material-symbols-outlined text-[20px]">mark_email_unread</span><span>Layanan Warga (E-Surat)</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="transparansi-dan-portal-publik" href="#"><span class="material-symbols-outlined text-[20px]">public</span><span>Transparansi &amp; Portal</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="keamanan-dan-audit-trail" href="#"><span class="material-symbols-outlined text-[20px]">verified_user</span><span>Keamanan &amp; Audit Trail</span></a></nav></div></div><div class="p-space-md bg-surface-container-high/60 m-space-sm rounded-xl flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs text-primary font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px]">lock</span><span>Enkripsi AES-256 Aktif</span></div><div class="font-body-sm text-body-sm text-on-surface-variant">Sistem Informasi Desa Mandiri v4.2.1 • Balai Desa</div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container-low rounded-full font-label-sm text-label-sm text-primary"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-data-tabular-sm text-data-tabular-sm">Koneksi Server Desa: Terenkripsi &amp; Aktif</span></div><div class="hidden xl:flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm bg-surface-container-high px-space-sm py-space-xs rounded-lg"><span class="material-symbols-outlined text-[16px]">location_city</span><span>Wilayah: Wil. Dusun Krajan / RW 02 / RT 04</span></div></div><div class="flex items-center gap-space-md"><button class="relative p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" title="Notifikasi Pengajuan"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-space-sm pl-space-sm"><div class="flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface leading-tight">Bambang Hermanto</span><div class="flex items-center gap-space-xs justify-end"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="font-label-sm text-label-sm text-on-surface-variant">Kaur Tata Usaha (Operator Desa)</span></div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKkLG0G9qRmBPI9Xt9swDsSscdWvnHHUusSyF8p5id3iMkFWhQ0V5-2jPpwGPEdggoSuCRalvF8ppnC3FxpXj_8_kwtFOQpvkKTsqUwbLDQlkPgI_lwUgftZaL4hc9O4WXqcTYB0V9dtAxg43kz-BIxsbYbAivzM5RrDD_hB9R4YaEA1yCb6nFXo1w6xEwOUy38B2S3RxnbokoJz8jnNecyw8djTp8-3zi3g4sqr8Um8MO3ArRQVrU"/></div></div></header><div class="pt-16"><div class="w-full bg-surface-container-low/70 px-space-lg py-space-sm shadow-[0_1px_4px_rgba(0,0,0,0.02)] flex flex-wrap items-center justify-between gap-space-md"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px]">home</span><span>Portal</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-primary font-semibold">Administrasi Terpadu</span></div><div class="relative flex-1"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span><input class="w-full pl-9 pr-space-md py-1.5 rounded-lg bg-surface-container-lowest font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" placeholder="Cari NIK (16 digit) / Nama Warga / No KK..." type="text"/></div></div><div class="flex items-center gap-space-sm"><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md hover:bg-surface-container-high transition-colors shadow-sm"><span class="material-symbols-outlined text-[18px]">file_download</span><span>Export Register (Excel/PDF)</span></button><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-secondary transition-colors shadow-sm"><span class="material-symbols-outlined text-[18px]">person_add</span><span>Tambah Data Warga</span></button></div></div><main class="w-full px-space-lg py-space-md bg-background"><div class="flex flex-col w-full gap-space-lg">
+<!-- Overview Metrics Banner -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Stat 1: Total Penduduk -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Penduduk Aktif</span>
+<span class="p-space-xs rounded-lg bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">group</span>
+</span>
+</div>
+<div class="my-space-xs">
+<div class="font-headline-xl text-headline-xl text-primary leading-tight">3.428 <span class="font-body-md text-body-md font-normal text-on-surface-variant">Jiwa</span></div>
+</div>
+<div class="flex items-center justify-between pt-space-xs bg-surface-container-low px-space-sm py-1 rounded-lg">
+<div class="flex items-center gap-1 font-data-tabular-sm text-data-tabular-sm text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>L: 1.740</span>
+</div>
+<div class="text-on-surface-variant font-data-tabular-sm text-data-tabular-sm">|</div>
+<div class="flex items-center gap-1 font-data-tabular-sm text-data-tabular-sm text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>P: 1.688</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">100% Valid Dukcapil</span>
+</div>
+</div>
+<!-- Stat 2: Kepala Keluarga (KK) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Kepala Keluarga</span>
+<span class="p-space-xs rounded-lg bg-tertiary-fixed text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">home_work</span>
+</span>
+</div>
+<div class="my-space-xs">
+<div class="font-headline-xl text-headline-xl text-tertiary leading-tight">1.012 <span class="font-body-md text-body-md font-normal text-on-surface-variant">KK</span></div>
+</div>
+<div class="flex items-center justify-between pt-space-xs bg-surface-container-low px-space-sm py-1 rounded-lg">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Rata-rata 3,38 Jiwa/KK</span>
+<span class="font-data-tabular-sm text-data-tabular-sm text-primary font-medium">98,2% Kartu Baru (Barcode)</span>
+</div>
+</div>
+<!-- Stat 3: Mutasi Bulan Ini -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Mutasi Bulan Ini</span>
+<span class="p-space-xs rounded-lg bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">sync_alt</span>
+</span>
+</div>
+<div class="my-space-xs flex items-baseline gap-space-sm">
+<span class="font-headline-xl text-headline-xl text-primary leading-tight">+12</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Netto Dinamika</span>
+</div>
+<div class="grid grid-cols-4 gap-1 text-center bg-surface-container-low p-1 rounded-lg">
+<div class="bg-surface-container-lowest rounded py-0.5">
+<span class="block font-label-sm text-[10px] text-on-surface-variant">Lahir</span>
+<span class="font-data-tabular-sm text-data-tabular-sm font-semibold text-primary">+8</span>
+</div>
+<div class="bg-surface-container-lowest rounded py-0.5">
+<span class="block font-label-sm text-[10px] text-on-surface-variant">Wafat</span>
+<span class="font-data-tabular-sm text-data-tabular-sm font-semibold text-error">-3</span>
+</div>
+<div class="bg-surface-container-lowest rounded py-0.5">
+<span class="block font-label-sm text-[10px] text-on-surface-variant">Masuk</span>
+<span class="font-data-tabular-sm text-data-tabular-sm font-semibold text-primary">+12</span>
+</div>
+<div class="bg-surface-container-lowest rounded py-0.5">
+<span class="block font-label-sm text-[10px] text-on-surface-variant">Keluar</span>
+<span class="font-data-tabular-sm text-data-tabular-sm font-semibold text-error">-5</span>
+</div>
+</div>
+</div>
+<!-- Stat 4: Rentan & Bansos -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Warga Rentan &amp; Bansos</span>
+<span class="p-space-xs rounded-lg bg-surface-variant text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">shield_with_heart</span>
+</span>
+</div>
+<div class="my-space-xs">
+<div class="font-headline-xl text-headline-xl text-on-surface leading-tight">214 <span class="font-body-md text-body-md font-normal text-on-surface-variant">Jiwa Terdata</span></div>
+</div>
+<div class="flex items-center justify-between pt-space-xs bg-surface-container-low px-space-sm py-1 rounded-lg font-data-tabular-sm text-data-tabular-sm text-on-surface">
+<span title="Keluarga Pra-Sejahtera">Pra-Sej: <b class="text-tertiary">118</b></span>
+<span>•</span>
+<span title="Lansia Hidup Tunggal">Lansia: <b class="text-primary">64</b></span>
+<span>•</span>
+<span title="Penyandang Disabilitas">Difabel: <b class="text-secondary">32</b></span>
+</div>
+</div>
+</div>
+<!-- Operational Filter & Action Toolbar -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-space-md">
+<!-- Search & Filters -->
+<div class="flex flex-wrap items-center gap-space-sm flex-1">
+<div class="relative min-w-[280px] flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full pl-9 pr-space-md py-2 rounded-lg bg-surface-container-low font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:ring-2 focus:ring-primary" id="liveSearchInput" placeholder="Cari NIK (16 digit), No KK, atau Nama Lengkap..." type="text"/>
+</div>
+<!-- Wilayah Dusun Filter -->
+<div class="flex items-center gap-1 bg-surface-container-low px-space-sm py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">map</span>
+<select class="bg-transparent font-body-sm text-body-sm text-on-surface focus:outline-none">
+<option value="all">Semua Wilayah Dusun</option>
+<option value="krajan">Dusun Krajan (RW 01, RW 02)</option>
+<option value="sukamaju">Dusun Sukamaju (RW 03, RW 04)</option>
+<option value="mekarsari">Dusun Mekarsari (RW 05)</option>
+</select>
+</div>
+<!-- RT/RW Selector -->
+<div class="flex items-center gap-1 bg-surface-container-low px-space-sm py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">holiday_village</span>
+<select class="bg-transparent font-body-sm text-body-sm text-on-surface focus:outline-none">
+<option value="all">Semua RW/RT</option>
+<option value="rw01">RW 01 / Krajan Barat</option>
+<option value="rw02">RW 02 / Krajan Wetan</option>
+<option value="rw03">RW 03 / Sukamaju</option>
+<option value="rw04">RW 04 / Sawah Baru</option>
+</select>
+</div>
+</div>
+<!-- Quick Action Buttons -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="flex items-center gap-1 px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors shadow-sm" title="Cetak Buku Induk Format Standar Kemendagri">
+<span class="material-symbols-outlined text-[18px] text-error">picture_as_pdf</span>
+<span>Cetak Buku Induk</span>
+</button>
+<button class="flex items-center gap-1 px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors shadow-sm" title="Ekspor Data Format Excel">
+<span class="material-symbols-outlined text-[18px] text-primary">table_view</span>
+<span>Ekspor Format Kecamatan</span>
+</button>
+<button class="flex items-center gap-1 px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-variant text-primary font-label-md text-label-md transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">transfer_within_a_station</span>
+<span>+ Catat Mutasi</span>
+</button>
+<button class="flex items-center gap-1 px-space-md py-2 rounded-lg bg-primary-container text-on-primary hover:bg-secondary transition-colors font-label-md text-label-md shadow-sm">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>+ Tambah Warga Baru</span>
+</button>
+</div>
+</div>
+<!-- Category Filter Chips -->
+<div class="flex items-center gap-space-xs overflow-x-auto pt-space-xs">
+<button class="px-space-md py-1 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm whitespace-nowrap shadow-sm">Semua Warga (3.428)</button>
+<button class="px-space-md py-1 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap">Bansos &amp; DTKS (118)</button>
+<button class="px-space-md py-1 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap">Lansia Mandiri/Tunggal (64)</button>
+<button class="px-space-md py-1 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap">Penyandang Disabilitas (32)</button>
+<button class="px-space-md py-1 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap">Mutasi Baru (Bulan Ini: 37)</button>
+<button class="px-space-md py-1 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap">Wajib KTP Pemula (17th: 42)</button>
+</div>
+</div>
+<!-- Primary Registry & Action Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="px-space-md py-space-sm bg-surface-container-low flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+<span class="font-headline-md text-headline-md text-on-surface">Buku Induk Kependudukan Desa (Master Registry)</span>
+<span class="bg-surface-container text-primary font-data-tabular-sm text-data-tabular-sm px-2 py-0.5 rounded-full">Record Aktif: 3.428</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm shadow-sm transition-colors" id="toggleNikMask" onclick="toggleNikVisibility()">
+<span class="material-symbols-outlined text-[16px]" id="maskIcon">visibility_off</span>
+<span id="maskLabel">Sensor NIK/KK Aktif</span>
+</button>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Menampilkan 1-6 dari 3.428</span>
+</div>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-space-sm px-space-md">Identitas (NIK &amp; KK)</th>
+<th class="py-space-sm px-space-md">Nama Lengkap &amp; Dusun</th>
+<th class="py-space-sm px-space-md">Kelahiran / Usia</th>
+<th class="py-space-sm px-space-md">Agama / Pend. / Gol</th>
+<th class="py-space-sm px-space-md">Status Sipil</th>
+<th class="py-space-sm px-space-md">Klasifikasi Khusus</th>
+<th class="py-space-sm px-space-md">Mutasi</th>
+<th class="py-space-sm px-space-md text-center">Menu Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-sm text-body-sm">
+<!-- Row 1: Sukamto (Bansos PKH) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col font-data-tabular-sm text-data-tabular-sm">
+<span class="nik-value font-semibold text-primary" data-full="3302141508730002">330214******0002</span>
+<span class="text-on-surface-variant kk-value" data-full="3302142205010041">KK: 330214******0041</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="font-label-md text-label-md text-on-surface">Sukamto bin Sastro</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Dusun Krajan, RT 02 / RW 01</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="font-body-sm text-body-sm">Banyumas, 15 Ags 1973</div>
+<div class="font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">51 Tahun • Laki-laki</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div>Islam • SLTP</div>
+<div class="font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">Gol. Darah: O (Rhesus +)</div>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Kawin (Kepala Keluarga)</span>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-variant text-primary font-label-sm text-label-sm font-semibold">Bansos PKH</span>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-tertiary font-label-sm text-label-sm">Petani Penggarap</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Tetap</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-primary" title="Detail Profil Warga"><span class="material-symbols-outlined text-[18px]">account_box</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Ubah Data"><span class="material-symbols-outlined text-[18px]">edit_note</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Cetak Kartu Biodata Warga"><span class="material-symbols-outlined text-[18px]">print</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-error" title="Catat Mutasi / Meninggal / Pindah"><span class="material-symbols-outlined text-[18px]">swap_horiz</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Mbah Sri Wahyuni (Lansia Tunggal & BLT) -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-low/40">
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col font-data-tabular-sm text-data-tabular-sm">
+<span class="nik-value font-semibold text-primary" data-full="3302145201520001">330214******0001</span>
+<span class="text-on-surface-variant kk-value" data-full="3302140410050012">KK: 330214******0012</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="font-label-md text-label-md text-on-surface">Sri Wahyuni (Mbah Sri)</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Dusun Mekarsari, RT 01 / RW 05</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="font-body-sm text-body-sm">Cilacap, 12 Jan 1952</div>
+<div class="font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">72 Tahun • Perempuan</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div>Islam • SD / Sederajat</div>
+<div class="font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">Gol. Darah: B</div>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Cerai Mati (Kepala KK)</span>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-tertiary font-label-sm text-label-sm font-semibold">Lansia 72th</span>
+<span class="px-2 py-0.5 rounded bg-surface-variant text-primary font-label-sm text-label-sm font-semibold">BLT-DD</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Tetap</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-primary" title="Detail Profil Warga"><span class="material-symbols-outlined text-[18px]">account_box</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Ubah Data"><span class="material-symbols-outlined text-[18px]">edit_note</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Cetak Kartu Biodata Warga"><span class="material-symbols-outlined text-[18px]">print</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-error" title="Catat Mutasi / Meninggal / Pindah"><span class="material-symbols-outlined text-[18px]">swap_horiz</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Ahmad Fauzi (Disabilitas Sensorik) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col font-data-tabular-sm text-data-tabular-sm">
+<span class="nik-value font-semibold text-primary" data-full="3302142103980004">330214******0004</span>
+<span class="text-on-surface-variant kk-value" data-full="3302141508730002">KK: 330214******0002</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="font-label-md text-label-md text-on-surface">Ahmad Fauzi</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Dusun Krajan, RT 02 / RW 01</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="font-body-sm text-body-sm">Banyumas, 21 Mar 1998</div>
+<div class="font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">26 Tahun • Laki-laki</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div>Islam • SLTA / SMK</div>
+<div class="font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">Gol. Darah: AB</div>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Belum Kawin (Anak)</span>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-variant text-on-surface font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">accessible</span>
+<span>Disabilitas Wicara</span>
+</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Bantuan Asistensi</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Tetap</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-primary" title="Detail Profil Warga"><span class="material-symbols-outlined text-[18px]">account_box</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Ubah Data"><span class="material-symbols-outlined text-[18px]">edit_note</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Cetak Kartu Biodata Warga"><span class="material-symbols-outlined text-[18px]">print</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-error" title="Catat Mutasi / Meninggal / Pindah"><span class="material-symbols-outlined text-[18px]">swap_horiz</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Ratna Dewi (Warga Datang / Mutasi Baru) -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-low/40">
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col font-data-tabular-sm text-data-tabular-sm">
+<span class="nik-value font-semibold text-primary" data-full="3204124905950003">320412******0003</span>
+<span class="text-on-surface-variant kk-value" data-full="3302141902240009">KK: 330214******0009</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="font-label-md text-label-md text-on-surface">Ratna Dewi Kusuma</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Dusun Sukamaju, RT 03 / RW 04</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="font-body-sm text-body-sm">Bandung, 09 Mei 1995</div>
+<div class="font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">29 Tahun • Perempuan</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div>Islam • Diploma IV / S1</div>
+<div class="font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">Gol. Darah: A</div>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Kawin (Istri)</span>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Reguler / Guru Honorer</span>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary font-semibold bg-surface-variant px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">login</span>
+<span>Datang (04 Feb)</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-primary" title="Detail Profil Warga"><span class="material-symbols-outlined text-[18px]">account_box</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Ubah Data"><span class="material-symbols-outlined text-[18px]">edit_note</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Cetak Kartu Biodata Warga"><span class="material-symbols-outlined text-[18px]">print</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-error" title="Catat Mutasi / Meninggal / Pindah"><span class="material-symbols-outlined text-[18px]">swap_horiz</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Drs. H. Subagyo (Pensiunan / Reguler) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col font-data-tabular-sm text-data-tabular-sm">
+<span class="nik-value font-semibold text-primary" data-full="3302141112600001">330214******0001</span>
+<span class="text-on-surface-variant kk-value" data-full="3302140801850022">KK: 330214******0022</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="font-label-md text-label-md text-on-surface">Drs. H. Subagyo Pranoto</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Dusun Krajan, RT 01 / RW 02</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="font-body-sm text-body-sm">Kebumen, 11 Des 1960</div>
+<div class="font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">64 Tahun • Laki-laki</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div>Islam • Pascasarjana (S2)</div>
+<div class="font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">Gol. Darah: B</div>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Kawin (Kepala Keluarga)</span>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Tokoh Masyarakat / Pensiunan</span>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Tetap</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-primary" title="Detail Profil Warga"><span class="material-symbols-outlined text-[18px]">account_box</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Ubah Data"><span class="material-symbols-outlined text-[18px]">edit_note</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Cetak Kartu Biodata Warga"><span class="material-symbols-outlined text-[18px]">print</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-error" title="Catat Mutasi / Meninggal / Pindah"><span class="material-symbols-outlined text-[18px]">swap_horiz</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Bayi Anindita (Kelahiran Baru) -->
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-container-low/40">
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col font-data-tabular-sm text-data-tabular-sm">
+<span class="nik-value font-semibold text-primary" data-full="3302146402240001">330214******0001</span>
+<span class="text-on-surface-variant kk-value" data-full="3302142205010041">KK: 330214******0041</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="font-label-md text-label-md text-on-surface">Anindita Kirana Putri</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Dusun Krajan, RT 02 / RW 01</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="font-body-sm text-body-sm">Banyumas, 14 Feb 2024</div>
+<div class="font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">1 Bulan • Perempuan</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div>Islam • Belum Sekolah</div>
+<div class="font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">Gol. Darah: O</div>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-block px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Belum Kawin (Anak)</span>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-variant text-primary font-label-sm text-label-sm font-semibold">Balita Prioritas Stunting</span>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary font-semibold bg-surface-container px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">child_friendly</span>
+<span>Lahir Baru</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-primary" title="Detail Profil Warga"><span class="material-symbols-outlined text-[18px]">account_box</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Ubah Data"><span class="material-symbols-outlined text-[18px]">edit_note</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Cetak Surat Keterangan Kelahiran"><span class="material-symbols-outlined text-[18px]">print</span></button>
+<button class="p-1 rounded hover:bg-surface-container text-error" title="Catat Mutasi / Meninggal / Pindah"><span class="material-symbols-outlined text-[18px]">swap_horiz</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Footer -->
+<div class="px-space-md py-space-sm bg-surface-container-low flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm font-body-sm text-body-sm text-on-surface-variant">
+<span>Baris per halaman:</span>
+<select class="bg-surface-container-lowest px-2 py-1 rounded text-on-surface focus:outline-none">
+<option>10 Baris</option>
+<option>25 Baris</option>
+<option>50 Baris</option>
+<option>100 Baris</option>
+</select>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-on-surface-variant hover:text-on-surface disabled:opacity-50" disabled=""><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+<button class="px-3 py-1 rounded bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold">1</button>
+<button class="px-3 py-1 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-sm text-label-sm">2</button>
+<button class="px-3 py-1 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-sm text-label-sm">3</button>
+<span class="px-2 text-on-surface-variant">...</span>
+<button class="px-3 py-1 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-sm text-label-sm">343</button>
+<button class="px-2 py-1 rounded bg-surface-container-lowest text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- Bottom Grid: Buku Register Desa & Widget DTKS/Bansos -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- Left Column (7 cols): Panel Buku Mutasi & Registrasi Desa -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between flex-wrap gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">menu_book</span>
+<span class="font-headline-md text-headline-md text-on-surface">Buku Administrasi Desa Sesuai Permendagri No. 47/2016</span>
+</div>
+<span class="text-tertiary font-label-sm text-label-sm bg-tertiary-fixed px-2 py-0.5 rounded-full">Periode: Maret 2024</span>
+</div>
+<!-- Tab Navigasi Buku Register -->
+<div class="flex items-center gap-space-xs border-b border-surface-container-high pb-2 pt-1">
+<button class="px-space-sm py-1 font-label-md text-label-md text-primary font-semibold border-b-2 border-primary">Buku Mutasi Penduduk</button>
+<button class="px-space-sm py-1 font-label-md text-label-md text-on-surface-variant hover:text-on-surface">Buku Rekapitulasi Akhir Bulan</button>
+<button class="px-space-sm py-1 font-label-md text-label-md text-on-surface-variant hover:text-on-surface">Buku Penduduk Sementara (KIPEM)</button>
+</div>
+<!-- Antrian Verifikasi Mutasi Terbaru -->
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Verifikasi Mutasi Terkini yang Perlu Tanda Tangan Digital Kades</span>
+<!-- Item 1: Surat Kematian -->
+<div class="flex items-center justify-between p-space-sm bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-space-sm">
+<span class="p-2 rounded-lg bg-surface-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">sentiment_very_dissatisfied</span>
+</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface">Meninggal Dunia: Bpk. Martorejo (83 Thn)</span>
+<span class="font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">RT 01 / RW 02</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Surat Ket. Kematian No: 472.12/014/III/2024 • Saksi: Kadus Krajan</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1 rounded bg-primary-container text-on-primary font-label-sm text-label-sm hover:bg-secondary transition-colors shadow-sm">
+                Selesai Dicatat
+              </button>
+</div>
+</div>
+<!-- Item 2: Surat Datang -->
+<div class="flex items-center justify-between p-space-sm bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-space-sm">
+<span class="p-2 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface">Pindah Masuk: Bpk. Teguh Santoso (Keluarga - 3 Jiwa)</span>
+<span class="font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">RT 04 / RW 03</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Asal: Kec. Cilacap Tengah • SKPWNI No: 475/089/2024 Telah Diverifikasi</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1 rounded bg-primary-container text-on-primary font-label-sm text-label-sm hover:bg-secondary transition-colors shadow-sm">
+                Selesai Dicatat
+              </button>
+</div>
+</div>
+<!-- Item 3: Kelahiran -->
+<div class="flex items-center justify-between p-space-sm bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-space-sm">
+<span class="p-2 rounded-lg bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">child_care</span>
+</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface">Kelahiran Baru: Muhammad Arka (Anak Ke-2)</span>
+<span class="font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">RT 02 / RW 05</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Ortu: Bpk. Danu &amp; Ibu Fitri • Surat Lahir Bidan Desa Terlampir</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1 rounded bg-surface-container-high text-primary font-label-sm text-label-sm hover:bg-surface-variant transition-colors">
+                Terverifikasi
+              </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Buku Mutasi -->
+<div class="pt-space-sm flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Buku Induk Registrasi tersinkronisasi otomatis dengan Database Dindukcapil Kab. Banyumas</span>
+<button class="text-primary hover:underline font-semibold flex items-center gap-1">
+<span>Buka Register Lengkap</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Right Column (5 cols): Manajemen Bansos, DTKS & Kemiskinan Ekstrem -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">volunteer_activism</span>
+<span class="font-headline-md text-headline-md text-on-surface">Validasi Bantuan Sosial (DTKS)</span>
+</div>
+<span class="bg-surface-variant text-primary font-label-sm text-label-sm px-2 py-0.5 rounded font-semibold">Tepat Sasaran: 96,4%</span>
+</div>
+<!-- Visual Progress Akurasi Data -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface">Kemiskinan Ekstrem Terverifikasi Lapangan</span>
+<span class="font-data-tabular-sm text-data-tabular-sm font-semibold text-primary">118 / 122 KK (96,7%)</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 96.7%"></div>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Sisa 4 KK dalam jadwal peninjauan musyawarah desa khusus (Musdesus).</span>
+</div>
+<!-- Kuota & Realisasi Program Bansos -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Kuota Penyaluran Aktif TA 2024</span>
+<div class="grid grid-cols-2 gap-space-xs">
+<!-- Program 1: PKH -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Program Keluarga Harapan</span>
+<div class="font-headline-md text-headline-md text-primary mt-1">78 <span class="font-body-sm text-body-sm font-normal text-on-surface-variant">KPM</span></div>
+<span class="font-data-tabular-sm text-[11px] text-secondary font-medium">100% Tersalurkan Tahap 1</span>
+</div>
+<!-- Program 2: BLT Dana Desa -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">BLT Dana Desa (APBDes)</span>
+<div class="font-headline-md text-headline-md text-tertiary mt-1">32 <span class="font-body-sm text-body-sm font-normal text-on-surface-variant">KPM</span></div>
+<span class="font-data-tabular-sm text-[11px] text-on-surface-variant">Rp 300.000 / Bulan / KPM</span>
+</div>
+</div>
+</div>
+<!-- Peringatan Sistem Integritas Bansos -->
+<div class="p-space-sm rounded-lg bg-error-container/40 flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-error text-[20px] shrink-0 mt-0.5">warning</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-error-container font-semibold">2 Peringatan Data Ganda Bansos Ditemukan</span>
+<span class="font-body-sm text-body-sm text-on-error-container">NIK 330214****0088 tercatat ganda pada usulan PKH Kemensos dan BLT-DD. Perlu penghapusan di Musdesus.</span>
+</div>
+</div>
+</div>
+<!-- Action Button Bottom -->
+<div class="pt-space-sm flex items-center justify-between">
+<button class="w-full flex items-center justify-center gap-1 py-2 rounded-lg bg-surface-container-high hover:bg-surface-variant text-primary font-label-md text-label-md transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">fact_check</span>
+<span>Buka Modul Musdesus &amp; Audit Bansos</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Vanilla JS for Live Privacy Masking & Quick UX micro-interactions -->
+<script>
+  let isMasked = true;
+
+  function toggleNikVisibility() {
+    isMasked = !isMasked;
+    const nikElements = document.querySelectorAll('.nik-value');
+    const kkElements = document.querySelectorAll('.kk-value');
+    const maskIcon = document.getElementById('maskIcon');
+    const maskLabel = document.getElementById('maskLabel');
+
+    if (isMasked) {
+      maskIcon.innerText = 'visibility_off';
+      maskLabel.innerText = 'Sensor NIK/KK Aktif';
+      nikElements.forEach(el => {
+        const full = el.getAttribute('data-full');
+        el.innerText = full.substring(0, 6) + '******' + full.substring(12);
+      });
+      kkElements.forEach(el => {
+        const full = el.getAttribute('data-full');
+        el.innerText = 'KK: ' + full.substring(0, 6) + '******' + full.substring(12);
+      });
+    } else {
+      maskIcon.innerText = 'visibility';
+      maskLabel.innerText = 'Sensor Dimatikan';
+      nikElements.forEach(el => {
+        el.innerText = el.getAttribute('data-full');
+      });
+      kkElements.forEach(el => {
+        el.innerText = 'KK: ' + el.getAttribute('data-full');
+      });
+    }
+  }
+
+  // Live filter row search
+  document.getElementById('liveSearchInput')?.addEventListener('input', function(e) {
+    const val = e.target.value.toLowerCase().trim();
+    const rows = document.querySelectorAll('tbody tr');
+    rows.forEach(row => {
+      const text = row.innerText.toLowerCase();
+      if (text.includes(val)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  });
+</script></main></div></div></body></html>

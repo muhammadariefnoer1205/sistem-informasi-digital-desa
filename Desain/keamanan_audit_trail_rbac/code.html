@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline-variant": "#c0cab6", "on-error-container": "#93000a", "on-secondary": "#ffffff", "surface-variant": "#ceebbd", "on-error": "#ffffff", "on-background": "#0b2004", "on-secondary-fixed": "#052100", "surface": "#edffdf", "tertiary-fixed": "#f5e0bc", "on-surface-variant": "#40493b", "inverse-primary": "#85db69", "on-tertiary-container": "#ffeccd", "tertiary": "#605237", "tertiary-container": "#7a6a4d", "secondary-fixed-dim": "#8bda6a", "inverse-on-surface": "#dcf9ca", "surface-bright": "#edffdf", "surface-container-low": "#dffccd", "surface-dim": "#c6e3b5", "on-primary-fixed": "#032100", "on-primary-fixed-variant": "#115300", "error-container": "#ffdad6", "primary-fixed": "#a0f882", "surface-container-lowest": "#ffffff", "on-surface": "#0b2004", "tertiary-fixed-dim": "#d8c4a2", "surface-container": "#daf7c8", "on-tertiary-fixed": "#241a05", "primary": "#156100", "on-primary-container": "#c1ffa8", "on-secondary-fixed-variant": "#165200", "on-tertiary": "#ffffff", "surface-container-high": "#d4f1c2", "surface-tint": "#196d00", "surface-container-highest": "#ceebbd", "primary-fixed-dim": "#85db69", "background": "#edffdf", "on-tertiary-fixed-variant": "#52452b", "on-primary": "#ffffff", "error": "#ba1a1a", "secondary-fixed": "#a5f783", "on-secondary-container": "#29730c", "secondary-container": "#a5f783", "outline": "#707a69", "secondary": "#226d03", "primary-container": "#2a7c13", "inverse-surface": "#203616" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-mobile": "1rem", "space-xl": "2.5rem", "gutter-mobile": "0.75rem", "gutter": "1.25rem", "space-md": "1rem", "margin": "2rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "space-xs": "0.25rem" }, "fontFamily": { "data-tabular-md": [ "JetBrains Mono" ], "label-md": [ "Plus Jakarta Sans" ], "data-tabular-lg": [ "JetBrains Mono" ], "headline-lg": [ "Plus Jakarta Sans" ], "body-lg": [ "Plus Jakarta Sans" ], "body-md": [ "Plus Jakarta Sans" ], "headline-md": [ "Plus Jakarta Sans" ], "display-lg": [ "Plus Jakarta Sans" ], "headline-xl": [ "Plus Jakarta Sans" ], "body-sm": [ "Plus Jakarta Sans" ], "label-sm": [ "Plus Jakarta Sans" ], "data-tabular-sm": [ "JetBrains Mono" ] }, "fontSize": { "data-tabular-md": [ "13px", { "lineHeight": "18px", "fontWeight": "500" } ], "label-md": [ "13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "data-tabular-lg": [ "20px", { "lineHeight": "26px", "fontWeight": "600" } ], "headline-lg": [ "22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-md": [ "18px", { "lineHeight": "24px", "fontWeight": "600" } ], "display-lg": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-xl": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "body-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "label-sm": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" } ], "data-tabular-sm": [ "11px", { "lineHeight": "16px", "fontWeight": "400" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container"><img alt="Logo SatuDesa" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VtYWUwClBn7EGj551-h9IrOw0zlPvSgUMvRRRYCvt5hhUb4wUwYy6624bPDo3_3dyXHpC8u_o7sY5bvFUMPyWBZJ6vwDCrSZh8_Gr2Vtg0S0KIhNyHv8lY8bjcp9bce0bMdj5RK4CHijy24ik7xKjeh2kDmYub09pTk7w5B6Xp4Y_4JmCr40NgKtrlSZIQ0KGSx2XagahL6J0WKx33B76ZLDfbMGHkvfQBpW-xv9Mad8HYyopUsM3jnA"/><div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary leading-tight">SatuDesa</span><span class="font-label-sm text-label-sm text-on-surface-variant">Tata Kelola Digital</span></div></div><div class="p-space-sm"><div class="px-space-sm py-space-xs mb-space-xs font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Modul Utama</div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="kependudukan-dan-mutasi" href="#"><span class="material-symbols-outlined text-[20px]">groups</span><span>Kependudukan &amp; Mutasi</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="layanan-warga-e-surat" href="#"><span class="material-symbols-outlined text-[20px]">mark_email_unread</span><span>Layanan Warga (E-Surat)</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="transparansi-dan-portal-publik" href="#"><span class="material-symbols-outlined text-[20px]">public</span><span>Transparansi &amp; Portal</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md" data-path="keamanan-dan-audit-trail" href="#"><span class="material-symbols-outlined text-[20px]">verified_user</span><span>Keamanan &amp; Audit Trail</span></a></nav></div></div><div class="p-space-md bg-surface-container-high/60 m-space-sm rounded-xl flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs text-primary font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px]">lock</span><span>Enkripsi AES-256 Aktif</span></div><div class="font-body-sm text-body-sm text-on-surface-variant">Sistem Informasi Desa Mandiri v4.2.1 • Balai Desa</div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container-low rounded-full font-label-sm text-label-sm text-primary"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-data-tabular-sm text-data-tabular-sm">Koneksi Server Desa: Terenkripsi &amp; Aktif</span></div><div class="hidden xl:flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm bg-surface-container-high px-space-sm py-space-xs rounded-lg"><span class="material-symbols-outlined text-[16px]">location_city</span><span>Wilayah: Wil. Dusun Krajan / RW 02 / RT 04</span></div></div><div class="flex items-center gap-space-md"><button class="relative p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" title="Notifikasi Pengajuan"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-space-sm pl-space-sm"><div class="flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface leading-tight">Bambang Hermanto</span><div class="flex items-center gap-space-xs justify-end"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="font-label-sm text-label-sm text-on-surface-variant">Kaur Tata Usaha (Operator Desa)</span></div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKkLG0G9qRmBPI9Xt9swDsSscdWvnHHUusSyF8p5id3iMkFWhQ0V5-2jPpwGPEdggoSuCRalvF8ppnC3FxpXj_8_kwtFOQpvkKTsqUwbLDQlkPgI_lwUgftZaL4hc9O4WXqcTYB0V9dtAxg43kz-BIxsbYbAivzM5RrDD_hB9R4YaEA1yCb6nFXo1w6xEwOUy38B2S3RxnbokoJz8jnNecyw8djTp8-3zi3g4sqr8Um8MO3ArRQVrU"/></div></div></header><div class="pt-16"><div class="w-full bg-surface-container-low/70 px-space-lg py-space-sm shadow-[0_1px_4px_rgba(0,0,0,0.02)] flex flex-wrap items-center justify-between gap-space-md"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px]">home</span><span>Portal</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-primary font-semibold">Administrasi Terpadu</span></div><div class="relative flex-1"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span><input class="w-full pl-9 pr-space-md py-1.5 rounded-lg bg-surface-container-lowest font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" placeholder="Cari NIK (16 digit) / Nama Warga / No KK..." type="text"/></div></div><div class="flex items-center gap-space-sm"><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md hover:bg-surface-container-high transition-colors shadow-sm"><span class="material-symbols-outlined text-[18px]">file_download</span><span>Export Register (Excel/PDF)</span></button><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-secondary transition-colors shadow-sm"><span class="material-symbols-outlined text-[18px]">person_add</span><span>Tambah Data Warga</span></button></div></div><main class="w-full px-space-lg py-space-md bg-background"><div class="flex flex-col w-full gap-space-lg">
+<!-- Overview Header Banner: Security & UU PDP Posture -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-lg shadow-sm">
+<div class="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-primary/5 blur-3xl pointer-events-none"></div>
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md relative z-10">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            Kepatuhan Regulasi UU No. 27/2022 (UU PDP)
+          </span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container font-data-tabular-sm text-data-tabular-sm text-on-surface-variant">
+            ISO/IEC 27001 Ready
+          </span>
+</div>
+<div class="flex items-baseline gap-space-sm mt-1">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">Keamanan Sistem &amp; Audit Trail</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-data-tabular-sm">Kriptografi • Kontrol Akses • Forensik Data</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Pusat kendali proteksi data kependudukan balai desa. Memastikan integritas rekaman mutasi warga, validasi kriptografi Tanda Tangan Elektronik (TTE BSrE), serta isolasi hak akses spasial perangkat desa.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md shadow-sm hover:bg-surface-container-high transition-colors" id="btn-export-log">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Integritas Log WORM</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md shadow-sm hover:bg-secondary transition-all" id="btn-tambah-user">
+<span class="material-symbols-outlined text-[18px]">person_add_disabled</span>
+<span>+ Tambah Akun 2FA</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Metric Badges / Security Posture Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md">
+<!-- Metrik 1: Enkripsi Kolom Database -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Enkripsi Database</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</div>
+</div>
+<div class="mt-space-sm">
+<div class="font-data-tabular-lg text-data-tabular-lg text-primary">AES-256 GCM</div>
+<div class="flex items-center gap-1 mt-0.5 font-body-sm text-body-sm text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>NIK &amp; KK Terenkripsi</span>
+</div>
+</div>
+<div class="mt-space-xs pt-space-xs text-[11px] font-data-tabular-sm text-on-surface-variant/70 border-none">
+        Kunci KMS Rotasi: Tiap 90 Hari
+      </div>
+</div>
+<!-- Metrik 2: Password Hash Verification -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hashing Kredensial</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">key</span>
+</div>
+</div>
+<div class="mt-space-sm">
+<div class="font-data-tabular-lg text-data-tabular-lg text-on-surface">Argon2id</div>
+<div class="flex items-center gap-1 mt-0.5 font-body-sm text-body-sm text-primary font-medium">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+<span>Memori 64MB • Cost 3</span>
+</div>
+</div>
+<div class="mt-space-xs pt-space-xs text-[11px] font-data-tabular-sm text-on-surface-variant/70">
+        Anti-Bruteforce &amp; Salt Dinamis
+      </div>
+</div>
+<!-- Metrik 3: Modul TTE BSrE / BSSN -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sertifikasi TTE</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+</div>
+<div class="mt-space-sm">
+<div class="font-data-tabular-lg text-data-tabular-lg text-primary">BSrE / BSSN</div>
+<div class="flex items-center gap-1 mt-0.5 font-body-sm text-body-sm text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">link</span>
+<span>OCSP Live Validated</span>
+</div>
+</div>
+<div class="mt-space-xs pt-space-xs text-[11px] font-data-tabular-sm text-on-surface-variant/70">
+        RSA-4096 / SHA-512
+      </div>
+</div>
+<!-- Metrik 4: Firewall & Anomali -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Anomali Akses</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">security</span>
+</div>
+</div>
+<div class="mt-space-sm">
+<div class="font-data-tabular-lg text-data-tabular-lg text-on-surface">0 Insiden</div>
+<div class="flex items-center gap-1 mt-0.5 font-body-sm text-body-sm text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">shield_with_heart</span>
+<span>WAF Desa Proteksi 100%</span>
+</div>
+</div>
+<div class="mt-space-xs pt-space-xs text-[11px] font-data-tabular-sm text-on-surface-variant/70">
+        Rate-limit: 60 req/min/IP
+      </div>
+</div>
+<!-- Metrik 5: Audit Trail Logs Volume -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Log Terarsip (7 Hari)</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</div>
+</div>
+<div class="mt-space-sm">
+<div class="font-data-tabular-lg text-data-tabular-lg text-primary">14.820 Entri</div>
+<div class="flex items-center gap-1 mt-0.5 font-body-sm text-body-sm text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-[14px]">archive</span>
+<span>Merkle-Root Sinkron</span>
+</div>
+</div>
+<div class="mt-space-xs pt-space-xs text-[11px] font-data-tabular-sm text-on-surface-variant/70">
+        Penyimpanan WORM Aman
+      </div>
+</div>
+</div>
+<!-- Dual Workspace: Interactive RBAC Matrix & TTE / Certificate Visualizer -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- Kolom Kiri: Role-Based Access Control (RBAC) -->
+<div class="xl:col-span-8 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-space-md gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">manage_accounts</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Matriks Hak Akses Peran (RBAC)</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Kebijakan pemisahan tugas (Separation of Duty) &amp; perbatasan wilayah spasial aparatur desa.
+            </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded bg-surface-container font-label-sm text-label-sm text-primary">
+              Multi-Faktor (2FA TOTP): Wajib Perangkat
+            </span>
+</div>
+</div>
+<!-- Tabel Interaktif RBAC -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container/60 text-on-surface-variant font-label-sm text-label-sm">
+<th class="py-3 px-3 rounded-l-lg">Jabatan &amp; Peran Sistem</th>
+<th class="py-3 px-3">Cakupan Data Spasial</th>
+<th class="py-3 px-3">CRUD Kependudukan</th>
+<th class="py-3 px-3">Validasi &amp; TTE Dokumen</th>
+<th class="py-3 px-3">Audit Trail / Log</th>
+<th class="py-3 px-3 rounded-r-lg text-right">Status Akun</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-sm text-body-sm">
+<!-- Kepala Desa -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-3.5 px-3">
+<div class="font-label-md text-label-md text-primary">Kepala Desa (Kades)</div>
+<div class="text-[11px] text-on-surface-variant font-data-tabular-sm">Role: GOV_EXECUTIVE_HEAD</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant text-[11px] font-medium">Seluruh Wilayah Desa</span>
+</td>
+<td class="py-3.5 px-3">
+<div class="inline-flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-outline">visibility</span>
+<span>Read-Only</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="inline-flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-[16px]">draw</span>
+<span>TTE Final BSrE</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="text-on-surface-variant">Laporan Eksekutif</span>
+</td>
+<td class="py-3.5 px-3 text-right">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-label-sm font-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    1 Aktif (2FA)
+                  </span>
+</td>
+</tr>
+<!-- Kaur Tata Usaha / Operator -->
+<tr class="hover:bg-surface-container-high/30 transition-colors bg-surface-container-low/30">
+<td class="py-3.5 px-3">
+<div class="font-label-md text-label-md text-on-surface">Kaur Tata Usaha &amp; Pelayanan</div>
+<div class="text-[11px] text-on-surface-variant font-data-tabular-sm">Role: REGISTRAR_OPERATOR</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant text-[11px] font-medium">Seluruh Wilayah Desa</span>
+</td>
+<td class="py-3.5 px-3">
+<div class="inline-flex items-center gap-1 text-primary font-semibold">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+<span>CRUD Lengkap (Validasi NIK)</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="inline-flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">fact_check</span>
+<span>Draft &amp; Paraf Hirarki</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="text-primary font-medium">Pemeriksa Terbatas</span>
+</td>
+<td class="py-3.5 px-3 text-right">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-label-sm font-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    3 Aktif (2FA)
+                  </span>
+</td>
+</tr>
+<!-- Kepala Dusun / RT / RW -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-3.5 px-3">
+<div class="font-label-md text-label-md text-on-surface">Kepala Dusun / RW / RT</div>
+<div class="text-[11px] text-on-surface-variant font-data-tabular-sm">Role: TERRITORIAL_SUPERVISOR</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed text-[11px] font-bold">
+                    Terisolasi (RT/RW Terpilih)
+                  </span>
+</td>
+<td class="py-3.5 px-3">
+<div class="inline-flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">check_box</span>
+<span>Verifikasi Pengantar</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="inline-flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span>
+<span>Acc Pengantar Digital</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="text-on-surface-variant">Aktivitas Wilayahnya</span>
+</td>
+<td class="py-3.5 px-3 text-right">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant text-label-sm font-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                    28 Wilayah Terdaftar
+                  </span>
+</td>
+</tr>
+<!-- Warga Terverifikasi -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-3.5 px-3">
+<div class="font-label-md text-label-md text-on-surface">Warga Mandiri (Portal Warga)</div>
+<div class="text-[11px] text-on-surface-variant font-data-tabular-sm">Role: CITIZEN_AUTHENTICATED</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant text-[11px]">Hanya KK Sendiri</span>
+</td>
+<td class="py-3.5 px-3">
+<span class="text-on-surface-variant">Lihat &amp; Ajukan Koreksi</span>
+</td>
+<td class="py-3.5 px-3">
+<span class="text-on-surface-variant">Permohonan Mandiri</span>
+</td>
+<td class="py-3.5 px-3">
+<span class="text-on-surface-variant">Log Sesi Sendiri</span>
+</td>
+<td class="py-3.5 px-3 text-right">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-label-sm font-label-sm">
+                    1.420 NIK Warga Aktif
+                  </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Quick Access Control Security Alert -->
+<div class="mt-space-md p-space-md bg-surface-container-low rounded-xl flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">policy</span>
+<div class="text-body-sm font-body-sm text-on-surface">
+<strong class="font-semibold text-primary">Prinsip Least-Privilege Berjalan:</strong> Operator pelayanan tidak memiliki otoritas melihat log audit mutasi master ataupun mengubah parameter sistem KMS kriptografi.
+            </div>
+</div>
+<button class="px-space-md py-1.5 bg-primary text-on-primary rounded-lg font-label-sm text-label-sm shrink-0 shadow-sm hover:bg-secondary transition-colors">
+            Audit Kebijakan RBAC
+          </button>
+</div>
+</div>
+</div>
+<!-- Kolom Kanan: Simulator TTE BSrE & Validasi QR-Code -->
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">qr_code_scanner</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Verifikasi TTE &amp; QR BSrE</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">
+            Valid • Belum Dimodifikasi
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Pemeriksaan integritas stempel elektronik dokumen output (Surat Keterangan Usaha, Kelahiran, Domisili) sesuai standar BSrE/BSSN.
+        </p>
+<!-- Stempel Digital Mock Card -->
+<div class="bg-surface-container-low p-space-md rounded-xl relative overflow-hidden flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<!-- QR Pattern Visual -->
+<div class="w-24 h-24 rounded-lg bg-surface-container-lowest p-2 shadow-sm flex items-center justify-center shrink-0">
+<svg class="w-full h-full text-primary" fill="currentColor" viewbox="0 0 100 100">
+<path d="M0 0h36v36H0V0zm8 8v20h20V8H8zm56-8h36v36H64V0zm8 8v20h20V8H72zM0 64h36v36H0V64zm8 8v20h20V72H8zm44-56h8v8h-8V16zm-8 16h8v8h-8V32zm16 8h8v8h-8V40zm8-16h8v8h-8V24zm-16 24h8v8h-8V48zm24 8h8v8h-8V56zm-16 8h8v8h-8V64zm8 16h8v8h-8V80zm16-8h8v8h-8V72zm-24 16h8v8h-8V88zm24 8h8v8h-8V96zM44 64h8v8h-8V64zm8 8h8v8h-8V72zm-8 16h8v8h-8V88z"></path>
+</svg>
+</div>
+<div class="flex flex-col gap-1 min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Penandatangan Resmi</span>
+<div class="font-label-md text-label-md text-on-surface font-bold truncate">H. Ahmad Mulyadi, S.Sos</div>
+<span class="font-body-sm text-body-sm text-primary font-medium">Kepala Desa Karang Anyar</span>
+<div class="mt-1 font-data-tabular-sm text-data-tabular-sm text-on-surface-variant/80">
+                NIK: 3204012903740001
+              </div>
+</div>
+</div>
+<div class="mt-space-xs p-2.5 rounded-lg bg-surface-container-lowest flex flex-col gap-1">
+<div class="flex justify-between items-center text-[11px] font-data-tabular-sm">
+<span class="text-on-surface-variant">Sertifikat CA:</span>
+<span class="text-primary font-semibold">Balai Sertifikasi Elektronik</span>
+</div>
+<div class="flex justify-between items-center text-[11px] font-data-tabular-sm">
+<span class="text-on-surface-variant">Masa Berlaku:</span>
+<span class="text-on-surface">s/d 14 Nov 2026</span>
+</div>
+<div class="flex justify-between items-center text-[11px] font-data-tabular-sm">
+<span class="text-on-surface-variant">Status Hash:</span>
+<span class="text-secondary font-semibold">SHA-256 MATCHED</span>
+</div>
+</div>
+<!-- Document Digest Hash Display -->
+<div class="flex flex-col gap-0.5">
+<span class="text-[10px] uppercase tracking-wider font-label-sm text-on-surface-variant">Digital Signature Digest:</span>
+<span class="font-data-tabular-sm text-[10px] break-all text-on-surface-variant/90 bg-surface-container px-2 py-1 rounded">
+              e7b8f9a21c43d9284fca873b22019c8f00192a5bc1048b2938a8e1047fa8c392
+            </span>
+</div>
+</div>
+<div class="flex gap-space-sm">
+<button class="flex-1 py-2 px-3 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md text-center hover:bg-secondary hover:text-on-primary transition-colors">
+            Uji Validitas Dokumen Baru
+          </button>
+<button class="py-2 px-3 rounded-lg bg-surface-container text-primary font-label-md text-label-md hover:bg-surface-container-high transition-colors" title="Perbarui Sertifikat">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Real-Time Audit Trail & Data Mutation Forensics Panel -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col gap-space-md">
+<!-- Table Header with Search, Category Filter & Quick Actions -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-xs">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">history_edu</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Audit Trail &amp; Forensik Mutasi Data Real-Time</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+          Pencatatan tak terhapuskan (Immutable Log) untuk mematuhi kewajiban audit pemrosesan data pribadi penduduk.
+        </p>
+</div>
+<!-- Action & Filters Bar -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<div class="flex items-center bg-surface-container-low rounded-lg px-2.5 py-1.5 gap-1.5">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">filter_list</span>
+<select class="bg-transparent text-on-surface font-label-sm text-label-sm focus:outline-none cursor-pointer" id="filter-tingkat-risiko">
+<option value="all">Semua Kategori Risiko</option>
+<option value="kritis">Kritis (Tindakan Sensitif)</option>
+<option value="peringatan">Peringatan (Mutasi Data)</option>
+<option value="info">Info (Verifikasi/Unduh)</option>
+</select>
+</div>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm hover:bg-surface-container-high transition-colors" id="btn-diff-modal">
+<span class="material-symbols-outlined text-[16px]">difference</span>
+<span>Bandingkan Diff (Old vs New)</span>
+</button>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm hover:bg-secondary transition-colors">
+<span class="material-symbols-outlined text-[16px]">lock_reset</span>
+<span>Kunci Log WORM</span>
+</button>
+</div>
+</div>
+<!-- Live Event Log Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container/60 text-on-surface-variant font-label-sm text-label-sm">
+<th class="py-3 px-3 rounded-l-lg">Timestamp Presisi</th>
+<th class="py-3 px-3">Operator &amp; Peran</th>
+<th class="py-3 px-3">Terminal &amp; Alamat IP</th>
+<th class="py-3 px-3">Deskripsi Aksi / Mutasi Terinci</th>
+<th class="py-3 px-3">Tingkat Risiko</th>
+<th class="py-3 px-3 rounded-r-lg text-right">Forensik Diff</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm divide-y-0 text-on-surface" id="audit-table-body">
+<!-- Event 1: Modifikasi Tanggal Lahir (Kritis/Peringatan Tinggi) -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-3.5 px-3 font-data-tabular-sm text-data-tabular-sm text-on-surface whitespace-nowrap">
+              2024-10-24 14:38:12.894
+            </td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="font-label-md text-label-md text-on-surface">Hendra Wijaya</div>
+<div class="text-[11px] text-on-surface-variant font-data-tabular-sm">Kaur Tata Usaha (Operator 01)</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="font-data-tabular-sm text-data-tabular-sm text-on-surface">192.168.1.45</div>
+<div class="text-[11px] text-on-surface-variant">LAN Balai Desa • Terminal TU-2</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-body-sm text-body-sm">
+<span class="font-bold text-on-surface">MENGUBAH</span> tanggal lahir NIK <span class="font-data-tabular-sm text-primary font-bold">3204018274920002</span>
+</div>
+<div class="text-[11px] text-on-surface-variant mt-0.5">
+                Surat Pengantar RT No. 04/SKP/X/2024 terlampir sebagai dasar verifikasi
+              </div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                Kritis (Mutasi NIK)
+              </span>
+</td>
+<td class="py-3.5 px-3 text-right whitespace-nowrap">
+<button class="px-2.5 py-1 rounded bg-surface-container text-primary font-label-sm text-label-sm hover:bg-surface-container-high transition-colors" onclick="openDiffModal('3204018274920002', 'Tgl Lahir', '1985-04-12', '1985-04-14')">
+                Lihat Diff
+              </button>
+</td>
+</tr>
+<!-- Event 2: Tanda Tangan Elektronik Dokumen -->
+<tr class="hover:bg-surface-container-high/30 transition-colors bg-surface-container-low/20">
+<td class="py-3.5 px-3 font-data-tabular-sm text-data-tabular-sm text-on-surface whitespace-nowrap">
+              2024-10-24 14:15:02.102
+            </td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="font-label-md text-label-md text-primary font-bold">H. Ahmad Mulyadi, S.Sos</div>
+<div class="text-[11px] text-on-surface-variant font-data-tabular-sm">Kepala Desa (Kades)</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="font-data-tabular-sm text-data-tabular-sm text-on-surface">192.168.1.12</div>
+<div class="text-[11px] text-on-surface-variant">Ruang Kerja Kades • iPad Pro (WiFi WPA3)</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-body-sm text-body-sm">
+<span class="font-bold text-secondary">MENYETUJUI &amp; TTE</span> Surat Keterangan Usaha <span class="font-data-tabular-sm text-primary font-semibold">#SKU-2024-089</span>
+</div>
+<div class="text-[11px] text-on-surface-variant mt-0.5">
+                Pemohon: Rina Anggraeni (UMKM Keripik Tempe) • Sign ID: BSSN-DS-9831
+              </div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Info (TTE Sah)
+              </span>
+</td>
+<td class="py-3.5 px-3 text-right whitespace-nowrap">
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors" onclick="alert('Sertifikat Hash Dokumen Valid: 4e91...81a0 (BSrE)')">
+                Bukti Audit
+              </button>
+</td>
+</tr>
+<!-- Event 3: Ekspor Buku Induk Penduduk (Sensitif UU PDP) -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="py-3.5 px-3 font-data-tabular-sm text-data-tabular-sm text-on-surface whitespace-nowrap">
+              2024-10-24 11:22:45.311
+            </td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="font-label-md text-label-md text-on-surface">Siti Rahmawati</div>
+<div class="text-[11px] text-on-surface-variant font-data-tabular-sm">Kasi Kesejahteraan</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="font-data-tabular-sm text-data-tabular-sm text-on-surface">192.168.1.58</div>
+<div class="text-[11px] text-on-surface-variant">LAN Balai Desa • Terminal Kesra</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-body-sm text-body-sm">
+<span class="font-bold text-on-surface">EKSPOR MASSAL</span> Buku Induk Penduduk Wilayah Dusun Krajan (Format Excel Terenkripsi)
+              </div>
+<div class="text-[11px] text-on-surface-variant mt-0.5">
+                Tujuan: Sinkronisasi Calon Penerima Bansos BLT Dana Desa Q4 • Password file dikirim via SMS OTP
+              </div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Peringatan (Data Sensitif)
+              </span>
+</td>
+<td class="py-3.5 px-3 text-right whitespace-nowrap">
+<button class="px-2.5 py-1 rounded bg-surface-container text-primary font-label-sm text-label-sm hover:bg-surface-container-high transition-colors" onclick="alert('Metadata Ekspor: File terenkripsi AES-128 dengan Watermark NIP Operator.')">
+                Enkripsi Info
+              </button>
+</td>
+</tr>
+<!-- Event 4: Gagal Login Berulang (Deteksi Anomali Brute Force) -->
+<tr class="hover:bg-surface-container-high/30 transition-colors bg-surface-container-low/20">
+<td class="py-3.5 px-3 font-data-tabular-sm text-data-tabular-sm text-on-surface whitespace-nowrap">
+              2024-10-24 09:04:19.450
+            </td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="font-label-md text-label-md text-on-surface-variant">Sistem Firewall WAF</div>
+<div class="text-[11px] text-on-surface-variant font-data-tabular-sm">Automated Defender Bot</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="font-data-tabular-sm text-data-tabular-sm text-error">103.149.28.19 (Public WAN)</div>
+<div class="text-[11px] text-on-surface-variant">Unknown ISP / Outside Geofence</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-body-sm text-body-sm">
+<span class="font-bold text-error">BLOKIR AKSES:</span> Percobaan 5x kesalahan kata sandi pada user <span class="font-data-tabular-sm font-semibold">operator_rw03</span>
+</div>
+<div class="text-[11px] text-on-surface-variant mt-0.5">
+                IP telah ditambahkan ke Drop-List selama 3600 detik secara otomatis.
+              </div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                Kritis (Percobaan Intrusi)
+              </span>
+</td>
+<td class="py-3.5 px-3 text-right whitespace-nowrap">
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors" onclick="alert('IP Status: Blacklisted via WAF Rule #FW-SEC-09')">
+                Aturan WAF
+              </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination & WORM Archive Indicator -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pt-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span class="inline-block w-2 h-2 rounded-full bg-primary"></span>
+<span>Menampilkan 4 dari 14.820 log transaksi (Filter: Semua Event Terverifikasi)</span>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm">
+<button class="px-3 py-1 rounded bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled="">Sebelumnya</button>
+<span class="px-2.5 py-1 rounded bg-primary text-on-primary font-semibold">1</span>
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors">2</button>
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors">3</button>
+<span class="px-1 text-on-surface-variant">•••</span>
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors">371</button>
+<button class="px-3 py-1 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors">Berikutnya</button>
+</div>
+</div>
+</div>
+<!-- Interactive Modal: Value Difference Forensics (Diff Old vs New) -->
+<div class="fixed inset-0 z-50 hidden bg-inverse-surface/50 backdrop-blur-sm flex items-center justify-center p-4" id="diff-modal">
+<div class="bg-surface-container-lowest rounded-xl max-w-xl w-full p-space-lg shadow-2xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">difference</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Forensik Diff: Perubahan Kolom Data</h3>
+</div>
+<button class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant" id="btn-close-modal">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">
+        Entitas Terdampak: <span class="font-data-tabular-sm text-primary font-bold" id="modal-nik">3204018274920002</span> • Field: <strong class="text-on-surface" id="modal-field">Tanggal Lahir</strong>
+</div>
+<!-- Comparative Panels -->
+<div class="grid grid-cols-2 gap-space-md">
+<!-- Old Value -->
+<div class="p-space-md rounded-xl bg-error-container/40 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-error-container uppercase font-semibold">Nilai Sebelumnya (Old)</span>
+<div class="font-data-tabular-lg text-data-tabular-lg text-on-error-container font-mono" id="modal-old-val">1985-04-12</div>
+<span class="text-[11px] text-on-surface-variant">Tercatat saat sinkronisasi SIAK 2022</span>
+</div>
+<!-- New Value -->
+<div class="p-space-md rounded-xl bg-secondary-container/50 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-secondary-container uppercase font-semibold">Nilai Baru (Mutasi Disetujui)</span>
+<div class="font-data-tabular-lg text-data-tabular-lg text-primary font-mono" id="modal-new-val">1985-04-14</div>
+<span class="text-[11px] text-on-surface-variant">Sesuai Ijazah SD &amp; Akta Kelahiran</span>
+</div>
+</div>
+<!-- Metadata Audit Trail Hash -->
+<div class="p-2.5 rounded-lg bg-surface-container text-[11px] font-data-tabular-sm text-on-surface-variant flex flex-col gap-1">
+<div>Merkle Tree Tx Hash: <span class="text-on-surface">0x81cf7128a6f3b00d81ef39</span></div>
+<div>Operator: Hendra Wijaya (Kaur TU) • Otorisator: Balai Desa Krajan</div>
+</div>
+<div class="flex justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2 rounded-lg bg-surface-container text-primary font-label-md text-label-md hover:bg-surface-container-high transition-colors" id="btn-unduh-bukti">
+          Unduh Berita Acara Perubahan
+        </button>
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-secondary transition-colors" id="btn-tutup-diff">
+          Tutup Forensik
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Interactive Modal Handlers for Forensics Diff
+  function openDiffModal(nik, field, oldVal, newVal) {
+    const modal = document.getElementById('diff-modal');
+    document.getElementById('modal-nik').innerText = nik;
+    document.getElementById('modal-field').innerText = field;
+    document.getElementById('modal-old-val').innerText = oldVal;
+    document.getElementById('modal-new-val').innerText = newVal;
+    modal.classList.remove('hidden');
+  }
+
+  document.getElementById('btn-close-modal')?.addEventListener('click', () => {
+    document.getElementById('diff-modal').classList.add('hidden');
+  });
+
+  document.getElementById('btn-tutup-diff')?.addEventListener('click', () => {
+    document.getElementById('diff-modal').classList.add('hidden');
+  });
+
+  document.getElementById('btn-diff-modal')?.addEventListener('click', () => {
+    openDiffModal('3204018274920002', 'Tanggal Lahir', '1985-04-12', '1985-04-14');
+  });
+
+  // Filter selection interaction
+  document.getElementById('filter-tingkat-risiko')?.addEventListener('change', function(e) {
+    const val = e.target.value;
+    const rows = document.querySelectorAll('#audit-table-body tr');
+    rows.forEach(row => {
+      if (val === 'all') {
+        row.style.display = '';
+      } else if (val === 'kritis' && !row.innerText.includes('Kritis')) {
+        row.style.display = 'none';
+      } else if (val === 'peringatan' && !row.innerText.includes('Peringatan')) {
+        row.style.display = 'none';
+      } else if (val === 'info' && !row.innerText.includes('Info')) {
+        row.style.display = 'none';
+      } else {
+        row.style.display = '';
+      }
+    });
+  });
+
+  // Additional Button Triggers
+  document.getElementById('btn-tambah-user')?.addEventListener('click', () => {
+    alert('Membuka wizard registrasi Perangkat Desa baru dengan integrasi Google Authenticator / TOTP Hardware Token.');
+  });
+
+  document.getElementById('btn-export-log')?.addEventListener('click', () => {
+    alert('Log Audit Trail telah dikunci dalam snapshot WORM (Write Once, Read Many). Hash integritas diarsip ke server Pemkab.');
+  });
+</script></main></div></div></body></html>
