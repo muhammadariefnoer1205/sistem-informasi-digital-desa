@@ -3,6 +3,7 @@ import AppLayout from './components/AppLayout';
 import KependudukanPage from './pages/KependudukanPage';
 import LayananWargaPage from './pages/LayananWargaPage';
 import TransparansiPortalPage from './pages/TransparansiPortalPage';
+import KeamananAuditPage from './pages/KeamananAuditPage';
 
 function ComingSoon({ title }) {
   return (
@@ -22,7 +23,8 @@ function App() {
           <Route path="/" element={<KependudukanPage />} />
           <Route path="/Layanan-Warga" element={<LayananWargaPage />} />
           <Route path="/Transparansi-&-Portal" element={<TransparansiPortalPage />} />
-          <Route path="/Keamanan-Audit" element={<ComingSoon title="Keamanan & Audit Trail" />} />
+          <Route path="/Keamanan-Audit" element={<KeamananAuditPage />} />
+          <Route path="/Keamanan-&-Audit-Trail" element={<KeamananAuditPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AppLayout>

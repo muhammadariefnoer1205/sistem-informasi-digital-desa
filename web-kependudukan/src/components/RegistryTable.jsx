@@ -1,20 +1,24 @@
 import { WargaRow } from './WargaTable';
 
-export default function RegistryTable({ rows, masked, onToggleMask }) {
+export default function RegistryTable({ rows, masked, onToggleMask, loading, source, total }) {
   return (
     <div className="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
       <div className="px-space-md py-space-sm bg-surface-container-low flex flex-wrap items-center justify-between gap-space-sm">
         <div className="flex items-center gap-space-sm flex-wrap">
           <span className="material-symbols-outlined text-primary text-[20px]">badge</span>
           <span className="text-[18px] font-semibold text-on-surface">Buku Induk Kependudukan Desa (Master Registry)</span>
-          <span className="bg-surface-container text-primary font-mono-tabular text-[11px] px-2 py-0.5 rounded-full">Record Aktif: 3.428</span>
+          <span className="bg-surface-container text-primary font-mono-tabular text-[11px] px-2 py-0.5 rounded-full">
+            Record Aktif: {total ?? rows.length}{source === 'supabase' ? ' • Supabase' : source === 'local' ? ' • Lokal' : ''}
+          </span>
         </div>
         <div className="flex items-center gap-space-sm flex-wrap">
           <button onClick={onToggleMask} className="flex items-center gap-1 px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface text-[11px] font-semibold shadow-sm transition-colors">
             <span className="material-symbols-outlined text-[16px]">{masked ? 'visibility_off' : 'visibility'}</span>
             <span>{masked ? 'Sensor NIK/KK Aktif' : 'Sensor Dimatikan'}</span>
           </button>
-          <span className="text-on-surface-variant text-[11px] font-semibold">Menampilkan 1-{rows.length} dari 3.428</span>
+          <span className="text-on-surface-variant text-[11px] font-semibold">
+            {loading ? 'Memuat dari Supabase…' : `Menampilkan ${rows.length} dari ${total ?? rows.length}`}
+          </span>
         </div>
       </div>
       <div className="overflow-x-auto w-full">
@@ -32,8 +36,11 @@ export default function RegistryTable({ rows, masked, onToggleMask }) {
             </tr>
           </thead>
           <tbody className="text-on-surface text-[12px]">
-            {rows.map((w) => (<WargaRow key={w.id} w={w} masked={masked} />))}
-            {rows.length === 0 && (
+            {loading && (
+              <tr><td colSpan={8} className="py-space-lg px-space-md text-center text-on-surface-variant">Memuat data warga dari Supabase…</td></tr>
+            )}
+            {!loading && rows.map((w) => (<WargaRow key={w.id} w={w} masked={masked} />))}
+            {!loading && rows.length === 0 && (
               <tr><td colSpan={8} className="py-space-lg px-space-md text-center text-on-surface-variant">Tidak ada warga yang cocok dengan pencarian / filter.</td></tr>
             )}
           </tbody>

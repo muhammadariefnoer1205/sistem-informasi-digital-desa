@@ -1,6 +1,6 @@
 import { CATEGORY_CHIPS } from '../data/warga';
 
-export default function Toolbar({ query, setQuery, dusun, setDusun, rw, setRw, category, setCategory }) {
+export default function Toolbar({ query, setQuery, dusun, setDusun, rw, setRw, category, setCategory, onTambah }) {
   return (
     <div className="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
       <div className="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-space-md">
@@ -48,7 +48,7 @@ export default function Toolbar({ query, setQuery, dusun, setDusun, rw, setRw, c
             <span className="material-symbols-outlined text-[18px]">transfer_within_a_station</span>
             <span>+ Catat Mutasi</span>
           </button>
-          <button className="flex items-center gap-1 px-space-md py-2 rounded-lg bg-primary-container text-on-primary hover:bg-secondary transition-colors text-[13px] font-semibold shadow-sm">
+          <button onClick={onTambah} className="flex items-center gap-1 px-space-md py-2 rounded-lg bg-primary-container text-on-primary hover:bg-secondary transition-colors text-[13px] font-semibold shadow-sm">
             <span className="material-symbols-outlined text-[18px]">person_add</span>
             <span>+ Tambah Warga Baru</span>
           </button>
