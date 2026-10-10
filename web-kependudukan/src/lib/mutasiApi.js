@@ -1,3 +1,5 @@
+import { supabase, isSupabaseConfigured } from './supabase';
+
 // ---- Mutasi penduduk -------------------------------------------------
 // jenis: 'lahir' | 'datang' | 'pindah' | 'wafat'
 export const MUTASI_META = {

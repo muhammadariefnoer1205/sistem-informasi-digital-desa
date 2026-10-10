@@ -7,7 +7,7 @@ values
   ('3302141508730002', '3302142205010041', 'Sukamto bin Sastro',
    'krajan', 'rw01', '02', 'Dusun Krajan, RT 02 / RW 01',
    'Banyumas', '1973-08-15', '51 Tahun — Laki-laki', 'Laki-laki',
-   'Islam', 'SLTP', 'Gol. Darah: O (Rhesus +)', 'Kawin (Kepala Keluarga)',
+   'Islam', 'SLTP', 'Gol. Darah: O (Rhesus +)', 'Kawin (Kepala Keluarga)',  
    'bansos', 'tetap', 'Tetap', null,
    '[{"label":"Bansos PKH","cls":"bg-surface-variant text-primary font-semibold"},
      {"label":"Petani Penggarap","cls":"bg-tertiary-fixed text-tertiary"}]'::jsonb),
