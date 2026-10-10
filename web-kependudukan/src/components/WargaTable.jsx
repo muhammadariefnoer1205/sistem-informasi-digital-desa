@@ -25,7 +25,7 @@ export function MutasiBadge({ mutasi }) {
   );
 }
 
-export function WargaRow({ w, masked, onDetail, onEdit, onPrint }) {
+export function WargaRow({ w, masked, onDetail, onEdit, onPrint, onMutasi }) {
   return (
     <tr className={`hover:bg-surface-container-low transition-colors ${w.striped ? 'bg-surface-container-low/40' : ''}`}>
       <td className="py-space-sm px-space-md">
@@ -65,7 +65,7 @@ export function WargaRow({ w, masked, onDetail, onEdit, onPrint }) {
           <button onClick={() => onDetail?.(w)} className="p-1 rounded hover:bg-surface-container text-primary" title="Detail Profil Warga"><span className="material-symbols-outlined text-[18px]">account_box</span></button>
           <button onClick={() => onEdit?.(w)} className="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Ubah Data"><span className="material-symbols-outlined text-[18px]">edit_note</span></button>
           <button onClick={() => onPrint?.(w)} className="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Cetak"><span className="material-symbols-outlined text-[18px]">print</span></button>
-          <button className="p-1 rounded hover:bg-surface-container text-error" title="Catat Mutasi"><span className="material-symbols-outlined text-[18px]">swap_horiz</span></button>
+          <button onClick={() => onMutasi?.(w)} className="p-1 rounded hover:bg-surface-container text-error" title="Catat Mutasi"><span className="material-symbols-outlined text-[18px]">swap_horiz</span></button>
         </div>
       </td>
     </tr>

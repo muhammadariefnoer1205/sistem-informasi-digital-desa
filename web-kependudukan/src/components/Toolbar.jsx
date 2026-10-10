@@ -1,6 +1,6 @@
 import { CATEGORY_CHIPS } from '../data/warga';
 
-export default function Toolbar({ query, setQuery, dusun, setDusun, rw, setRw, category, setCategory, onTambah, onCetakPdf, onEksporExcel }) {
+export default function Toolbar({ query, setQuery, dusun, setDusun, rw, setRw, category, setCategory, onTambah, onCetakPdf, onEksporExcel, onMutasi }) {
   return (
     <div className="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
       <div className="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-space-md">
@@ -44,7 +44,7 @@ export default function Toolbar({ query, setQuery, dusun, setDusun, rw, setRw, c
             <span className="material-symbols-outlined text-[18px] text-primary">table_view</span>
             <span>Ekspor Format Kecamatan</span>
           </button>
-          <button className="flex items-center gap-1 px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-variant text-primary text-[13px] font-semibold transition-colors shadow-sm">
+          <button onClick={onMutasi} className="flex items-center gap-1 px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-variant text-primary text-[13px] font-semibold transition-colors shadow-sm">
             <span className="material-symbols-outlined text-[18px]">transfer_within_a_station</span>
             <span>+ Catat Mutasi</span>
           </button>

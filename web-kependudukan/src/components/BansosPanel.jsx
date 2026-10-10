@@ -1,4 +1,4 @@
-export default function BansosPanel() {
+export default function BansosPanel({ onMusdesus }) {
   return (
     <div className="lg:col-span-5 bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
       <div className="flex flex-col gap-space-sm">
@@ -43,7 +43,7 @@ export default function BansosPanel() {
         </div>
       </div>
       <div className="pt-space-sm">
-        <button className="w-full flex items-center justify-center gap-1 py-2 rounded-lg bg-surface-container-high hover:bg-surface-variant text-primary text-[13px] font-semibold transition-colors shadow-sm">
+        <button onClick={onMusdesus} className="w-full flex items-center justify-center gap-1 py-2 rounded-lg bg-surface-container-high hover:bg-surface-variant text-primary text-[13px] font-semibold transition-colors shadow-sm">
           <span className="material-symbols-outlined text-[18px]">fact_check</span>
           <span>Buka Modul Musdesus &amp; Audit Bansos</span>
         </button>

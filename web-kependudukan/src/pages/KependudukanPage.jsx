@@ -7,7 +7,11 @@ import BansosPanel from '../components/BansosPanel';
 import TambahWargaModal from '../components/warga/TambahWargaModal';
 import DetailWargaModal from '../components/warga/DetailWargaModal';
 import UbahWargaModal from '../components/warga/UbahWargaModal';
+import CatatMutasiModal from '../components/warga/CatatMutasiModal';
+import RegisterModal from '../components/warga/RegisterModal';
+import MusdesusModal from '../components/warga/MusdesusModal';
 import { fetchWargas, insertWarga, updateWarga, mapRowToWarga } from '../lib/wargaApi';
+import { fetchMutasiLog, insertMutasiLog, applyMutasiToWarga, MUTASI_META } from '../lib/mutasiApi';
 import { printBiodata } from '../lib/printBiodata';
 import { exportRegisterExcel, printRegisterPdf } from '../lib/exportRegister';
 import { registerSubHeaderActions } from '../lib/subHeaderBus';
@@ -32,6 +36,14 @@ export default function KependudukanPage() {
   const [editWarga, setEditWarga] = useState(null);
   const [editSaving, setEditSaving] = useState(false);
   const [editError, setEditError] = useState('');
+  const [mutasiOpen, setMutasiOpen] = useState(false);
+  const [mutasiWargaId, setMutasiWargaId] = useState('');
+  const [mutasiSaving, setMutasiSaving] = useState(false);
+  const [mutasiError, setMutasiError] = useState('');
+  const [mutasiLog, setMutasiLog] = useState([]);
+  const [registerOpen, setRegisterOpen] = useState(false);
+  const [musdesusOpen, setMusdesusOpen] = useState(false);
+  const [musdesusNotice, setMusdesusNotice] = useState('');
 
   useEffect(() => {
     let alive = true;
@@ -47,6 +59,18 @@ export default function KependudukanPage() {
       } finally {
         if (alive) setLoading(false);
       }
+    })();
+    return () => { alive = false; };
+  }, []);
+
+  // Muat riwayat mutasi untuk panel Buku Mutasi (Supabase; gagal → diam).
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      try {
+        const res = await fetchMutasiLog(20);
+        if (alive) setMutasiLog(res.data);
+      } catch { /* panel tetap pakai data statis */ }
     })();
     return () => { alive = false; };
   }, []);
@@ -156,6 +180,53 @@ export default function KependudukanPage() {
     }
   };
 
+  const openMutasi = (w) => {
+    setMutasiError('');
+    setMutasiWargaId(w?.id ?? '');
+    setMutasiOpen(true);
+  };
+
+  const handleMutasiSubmit = async (form) => {
+    setMutasiSaving(true);
+    setMutasiError('');
+    try {
+      const warga = wargas.find((x) => String(x.id) === String(form.warga_id));
+      if (!warga) throw new Error('Pilih warga terlebih dahulu.');
+      if (!form.tanggal) throw new Error('Tanggal peristiwa wajib diisi.');
+      const meta = MUTASI_META[form.jenis];
+      const keluar = form.jenis === 'pindah' || form.jenis === 'wafat';
+      const label = keluar
+        ? `${meta.label} (${new Date(`${form.tanggal}T00:00:00`).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })})`
+        : warga.mutasi?.label ?? 'Tetap';
+      if (source === 'supabase') {
+        await insertMutasiLog({
+          warga_id: warga.id, nik: warga.nik, nama_lengkap: warga.nama,
+          jenis: form.jenis, tanggal: form.tanggal,
+          keterangan: form.keterangan, asal_tujuan: form.asal_tujuan,
+        });
+        const updated = await applyMutasiToWarga(warga, form.jenis, label);
+        // Pindah/wafat → is_active=false → hilang dari Buku Induk.
+        setWargas((prev) => applyStripes(
+          keluar
+            ? prev.filter((x) => x.id !== warga.id)
+            : prev.map((x) => (x.id === warga.id ? mapRowToWarga(updated, 0) : x)),
+        ));
+        const log = await fetchMutasiLog(20).catch(() => null);
+        if (log) setMutasiLog(log.data);
+      } else {
+        // Mode lokal: catat ke memori + terapkan efek ke state.
+        setMutasiLog((prev) => [{ id: `local-${Date.now()}`, nik: warga.nik, nama_lengkap: warga.nama, jenis: form.jenis, tanggal: form.tanggal, keterangan: form.keterangan, asal_tujuan: form.asal_tujuan, created_at: new Date().toISOString() }, ...prev].slice(0, 20));
+        if (keluar) setWargas((prev) => applyStripes(prev.filter((x) => x.id !== warga.id)));
+      }
+      setMutasiOpen(false);
+      setNotice(`Mutasi ${meta.label} untuk ${warga.nama} tercatat${keluar ? ' — warga dinonaktifkan dari Buku Induk' : ''}.`);
+    } catch (err) {
+      setMutasiError(err.message ?? 'Gagal menyimpan mutasi.');
+    } finally {
+      setMutasiSaving(false);
+    }
+  };
+
   return (
     <div className="flex flex-col w-full gap-space-lg">
       {!isSupabaseConfigured && (
@@ -181,15 +252,17 @@ export default function KependudukanPage() {
         rw={rw} setRw={setRw}
         category={category} setCategory={setCategory}
         onTambah={openTambah} onCetakPdf={doExportPdf} onEksporExcel={doExportExcel}
+        onMutasi={() => openMutasi()}
       />
       <RegistryTable rows={rows} masked={masked} onToggleMask={() => setMasked((m) => !m)} loading={loading} source={source} total={wargas.length}
         onDetail={(w) => setDetailWarga(w)}
         onEdit={(w) => { setEditError(''); setEditWarga(w); }}
         onPrint={(w) => printBiodata(w, masked)}
+        onMutasi={(w) => openMutasi(w)}
       />
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
-        <BukuMutasi />
-        <BansosPanel />
+        <BukuMutasi log={mutasiLog} onRegister={() => setRegisterOpen(true)} />
+        <BansosPanel onMusdesus={() => { setMusdesusNotice(''); setMusdesusOpen(true); }} />
       </div>
       <TambahWargaModal open={modalOpen} saving={saving} error={saveError} onClose={() => setModalOpen(false)} onSubmit={handleSubmit} />
       <DetailWargaModal warga={detailWarga} masked={masked} onClose={() => setDetailWarga(null)}
@@ -198,6 +271,17 @@ export default function KependudukanPage() {
       />
       <UbahWargaModal warga={editWarga} open={!!editWarga} saving={editSaving} error={editError}
         onClose={() => setEditWarga(null)} onSubmit={handleUpdate}
+      />
+      <CatatMutasiModal open={mutasiOpen} wargas={wargas} initialWargaId={mutasiWargaId}
+        saving={mutasiSaving} error={mutasiError}
+        onClose={() => setMutasiOpen(false)} onSubmit={handleMutasiSubmit}
+      />
+      <RegisterModal open={registerOpen} rows={rows} masked={masked} loading={loading}
+        onClose={() => setRegisterOpen(false)} onExport={doExportPdf}
+      />
+      <MusdesusModal open={musdesusOpen} notice={musdesusNotice}
+        onClose={() => setMusdesusOpen(false)}
+        onResolve={(g) => setMusdesusNotice(g.berita ? 'Berita Acara disiapkan untuk diunduh (PDF).' : `${g.nama} dihapus dari BLT-DD — tersisa di PKH Kemensos.`)}
       />
     </div>
   );
