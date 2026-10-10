@@ -22,6 +22,13 @@ export function mapRowToWarga(row, index = 0) {
     mutasi: { type: row.mutasi_type ?? 'tetap', label: row.mutasi_label ?? 'Tetap', icon: row.mutasi_icon ?? undefined },
     dusun: row.dusun ?? 'krajan',
     rw: row.rw ?? 'rw01',
+    // Field mentah untuk form Ubah (tidak ditampilkan di tabel):
+    rt: row.rt ?? '',
+    tempat_lahir: row.tempat_lahir ?? '',
+    tanggal_lahir: row.tanggal_lahir ?? '',
+    jenis_kelamin: row.jenis_kelamin ?? '',
+    agama: row.agama ?? '',
+    pendidikan: row.pendidikan ?? '',
     striped: index % 2 === 1,
   };
 }
@@ -74,4 +81,23 @@ export async function insertWarga(form) {
     .single();
   if (error) throw error;
   return mapRowToWarga(data, 0);
+}
+
+// Update baris warga berdasarkan id (UUID Supabase). Untuk data lokal
+// (tanpa Supabase), update dilakukan di state oleh pemanggil.
+export async function updateWarga(id, form) {
+  if (!isSupabaseConfigured) {
+    throw new Error('Supabase belum dikonfigurasi. Isi VITE_SUPABASE_URL dan VITE_SUPABASE_ANON_KEY di file .env.');
+  }
+  const payload = mapFormToRow(form);
+  // NIK tidak diubah (kunci unik) — keluarkan dari payload update.
+  delete payload.nik;
+  const { data, error } = await supabase
+    .from('warga')
+    .update(payload)
+    .eq('id', id)
+    .select('*')
+    .single();
+  if (error) throw error;
+  return data;
 }

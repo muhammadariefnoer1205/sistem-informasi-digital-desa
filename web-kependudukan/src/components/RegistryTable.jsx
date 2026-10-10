@@ -1,6 +1,6 @@
 import { WargaRow } from './WargaTable';
 
-export default function RegistryTable({ rows, masked, onToggleMask, loading, source, total }) {
+export default function RegistryTable({ rows, masked, onToggleMask, loading, source, total, onDetail, onEdit, onPrint }) {
   return (
     <div className="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
       <div className="px-space-md py-space-sm bg-surface-container-low flex flex-wrap items-center justify-between gap-space-sm">
@@ -39,7 +39,7 @@ export default function RegistryTable({ rows, masked, onToggleMask, loading, sou
             {loading && (
               <tr><td colSpan={8} className="py-space-lg px-space-md text-center text-on-surface-variant">Memuat data warga dari Supabase…</td></tr>
             )}
-            {!loading && rows.map((w) => (<WargaRow key={w.id} w={w} masked={masked} />))}
+            {!loading && rows.map((w) => (<WargaRow key={w.id} w={w} masked={masked} onDetail={onDetail} onEdit={onEdit} onPrint={onPrint} />))}
             {!loading && rows.length === 0 && (
               <tr><td colSpan={8} className="py-space-lg px-space-md text-center text-on-surface-variant">Tidak ada warga yang cocok dengan pencarian / filter.</td></tr>
             )}

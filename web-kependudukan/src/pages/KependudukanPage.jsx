@@ -5,7 +5,10 @@ import RegistryTable from '../components/RegistryTable';
 import BukuMutasi from '../components/BukuMutasi';
 import BansosPanel from '../components/BansosPanel';
 import TambahWargaModal from '../components/warga/TambahWargaModal';
-import { fetchWargas, insertWarga, mapRowToWarga } from '../lib/wargaApi';
+import DetailWargaModal from '../components/warga/DetailWargaModal';
+import UbahWargaModal from '../components/warga/UbahWargaModal';
+import { fetchWargas, insertWarga, updateWarga, mapRowToWarga } from '../lib/wargaApi';
+import { printBiodata } from '../lib/printBiodata';
 import { isSupabaseConfigured } from '../lib/supabase';
 
 export default function KependudukanPage() {
@@ -23,6 +26,10 @@ export default function KependudukanPage() {
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState('');
   const [notice, setNotice] = useState('');
+  const [detailWarga, setDetailWarga] = useState(null);
+  const [editWarga, setEditWarga] = useState(null);
+  const [editSaving, setEditSaving] = useState(false);
+  const [editError, setEditError] = useState('');
 
   useEffect(() => {
     let alive = true;
@@ -76,6 +83,56 @@ export default function KependudukanPage() {
     }
   };
 
+  const applyStripes = (list) => list.map((w, i) => ({ ...w, striped: i % 2 === 1 }));
+
+  const formToRow = (w, f) => ({
+    id: w.id,
+    nik: w.nik,
+    no_kk: f.no_kk,
+    nama_lengkap: f.nama_lengkap,
+    dusun: f.dusun,
+    rw: f.rw,
+    rt: f.rt || w.rt,
+    alamat: `Dusun ${f.dusun}, RT ${f.rt} / RW ${String(f.rw).replace('rw', '')}`,
+    tempat_lahir: f.tempat_lahir,
+    tanggal_lahir: f.tanggal_lahir || null,
+    usia_display: w.usia?.split('•')[0]?.trim() ?? '',
+    jenis_kelamin: f.jenis_kelamin,
+    agama: f.agama,
+    pendidikan: f.pendidikan,
+    gol_darah: f.gol_darah ? `Gol. Darah: ${f.gol_darah}` : w.golDarah,
+    status_sipil: f.status_sipil,
+    kategori: f.kategori,
+    mutasi_type: f.mutasi_type,
+    mutasi_label: f.mutasi_label,
+    mutasi_icon: w.mutasi?.icon ?? null,
+    klasifikasi: w.klasifikasi,
+  });
+
+  const handleUpdate = async (warga, form) => {
+    setEditSaving(true);
+    setEditError('');
+    try {
+      if (!/^[0-9]{16}$/.test(form.no_kk.trim())) throw new Error('No. KK harus tepat 16 digit angka.');
+      if (!form.nama_lengkap.trim()) throw new Error('Nama lengkap wajib diisi.');
+      if (source === 'supabase') {
+        const saved = await updateWarga(warga.id, form);
+        setWargas((prev) => applyStripes(prev.map((w) => (w.id === warga.id ? mapRowToWarga(saved, 0) : w))));
+      } else {
+        setWargas((prev) => applyStripes(prev.map((w) => (
+          w.id !== warga.id ? w : { ...mapRowToWarga(formToRow(w, form), 0), id: w.id, nik: w.nik }
+        ))));
+      }
+      setEditWarga(null);
+      setDetailWarga(null);
+      setNotice(`Data ${form.nama_lengkap} berhasil diperbarui.`);
+    } catch (err) {
+      setEditError(err.message ?? 'Gagal menyimpan perubahan.');
+    } finally {
+      setEditSaving(false);
+    }
+  };
+
   return (
     <div className="flex flex-col w-full gap-space-lg">
       {!isSupabaseConfigured && (
@@ -102,12 +159,23 @@ export default function KependudukanPage() {
         category={category} setCategory={setCategory}
         onTambah={() => { setSaveError(''); setModalOpen(true); }}
       />
-      <RegistryTable rows={rows} masked={masked} onToggleMask={() => setMasked((m) => !m)} loading={loading} source={source} total={wargas.length} />
+      <RegistryTable rows={rows} masked={masked} onToggleMask={() => setMasked((m) => !m)} loading={loading} source={source} total={wargas.length}
+        onDetail={(w) => setDetailWarga(w)}
+        onEdit={(w) => { setEditError(''); setEditWarga(w); }}
+        onPrint={(w) => printBiodata(w, masked)}
+      />
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
         <BukuMutasi />
         <BansosPanel />
       </div>
       <TambahWargaModal open={modalOpen} saving={saving} error={saveError} onClose={() => setModalOpen(false)} onSubmit={handleSubmit} />
+      <DetailWargaModal warga={detailWarga} masked={masked} onClose={() => setDetailWarga(null)}
+        onEdit={() => { setEditError(''); setEditWarga(detailWarga); }}
+        onPrint={() => printBiodata(detailWarga, masked)}
+      />
+      <UbahWargaModal warga={editWarga} open={!!editWarga} saving={editSaving} error={editError}
+        onClose={() => setEditWarga(null)} onSubmit={handleUpdate}
+      />
     </div>
   );
 }
