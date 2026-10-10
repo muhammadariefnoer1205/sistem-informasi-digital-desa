@@ -9,6 +9,8 @@ import DetailWargaModal from '../components/warga/DetailWargaModal';
 import UbahWargaModal from '../components/warga/UbahWargaModal';
 import { fetchWargas, insertWarga, updateWarga, mapRowToWarga } from '../lib/wargaApi';
 import { printBiodata } from '../lib/printBiodata';
+import { exportRegisterExcel, printRegisterPdf } from '../lib/exportRegister';
+import { registerSubHeaderActions } from '../lib/subHeaderBus';
 import { isSupabaseConfigured } from '../lib/supabase';
 
 export default function KependudukanPage() {
@@ -63,6 +65,27 @@ export default function KependudukanPage() {
       return hay.includes(q);
     });
   }, [wargas, query, dusun, rw, category]);
+
+  const filterInfo = useMemo(() => {
+    const parts = [];
+    if (query.trim()) parts.push(`cari "${query.trim()}"`);
+    if (dusun !== 'all') parts.push(`dusun ${dusun}`);
+    if (rw !== 'all') parts.push(rw.toUpperCase());
+    if (category !== 'semua') parts.push(`kategori ${category}`);
+    return parts.length ? `Filter aktif: ${parts.join(', ')}` : '';
+  }, [query, dusun, rw, category]);
+
+  const openTambah = () => { setSaveError(''); setModalOpen(true); };
+  const doExportExcel = () => exportRegisterExcel(rows, masked);
+  const doExportPdf = () => printRegisterPdf(rows, masked, { filterInfo });
+
+  // Daftarkan aksi ke SubHeader global (dropdown Export + Tambah).
+  // Tanpa deps array agar closure (rows/masked/filter) selalu segar.
+  useEffect(() => registerSubHeaderActions({
+    onExportExcel: doExportExcel,
+    onExportPdf: doExportPdf,
+    onTambah: openTambah,
+  }));
 
   const handleSubmit = async (form, reset) => {
     setSaving(true);
@@ -157,7 +180,7 @@ export default function KependudukanPage() {
         dusun={dusun} setDusun={setDusun}
         rw={rw} setRw={setRw}
         category={category} setCategory={setCategory}
-        onTambah={() => { setSaveError(''); setModalOpen(true); }}
+        onTambah={openTambah} onCetakPdf={doExportPdf} onEksporExcel={doExportExcel}
       />
       <RegistryTable rows={rows} masked={masked} onToggleMask={() => setMasked((m) => !m)} loading={loading} source={source} total={wargas.length}
         onDetail={(w) => setDetailWarga(w)}

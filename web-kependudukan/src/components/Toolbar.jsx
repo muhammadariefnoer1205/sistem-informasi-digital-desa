@@ -1,6 +1,6 @@
 import { CATEGORY_CHIPS } from '../data/warga';
 
-export default function Toolbar({ query, setQuery, dusun, setDusun, rw, setRw, category, setCategory, onTambah }) {
+export default function Toolbar({ query, setQuery, dusun, setDusun, rw, setRw, category, setCategory, onTambah, onCetakPdf, onEksporExcel }) {
   return (
     <div className="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
       <div className="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-space-md">
@@ -36,11 +36,11 @@ export default function Toolbar({ query, setQuery, dusun, setDusun, rw, setRw, c
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-space-xs">
-          <button className="flex items-center gap-1 px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-[13px] font-semibold transition-colors shadow-sm" title="Cetak Buku Induk Format Standar Kemendagri">
+          <button onClick={onCetakPdf} className="flex items-center gap-1 px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-[13px] font-semibold transition-colors shadow-sm" title="Cetak Buku Induk Format Standar Kemendagri">
             <span className="material-symbols-outlined text-[18px] text-error">picture_as_pdf</span>
             <span>Cetak Buku Induk</span>
           </button>
-          <button className="flex items-center gap-1 px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-[13px] font-semibold transition-colors shadow-sm" title="Ekspor Data Format Excel">
+          <button onClick={onEksporExcel} className="flex items-center gap-1 px-space-md py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-[13px] font-semibold transition-colors shadow-sm" title="Ekspor Data Format Excel">
             <span className="material-symbols-outlined text-[18px] text-primary">table_view</span>
             <span>Ekspor Format Kecamatan</span>
           </button>
