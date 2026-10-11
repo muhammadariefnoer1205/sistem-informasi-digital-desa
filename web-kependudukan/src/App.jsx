@@ -1,33 +1,35 @@
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
-import AppLayout from './components/AppLayout';
+import { AuthProvider } from './context/AuthContext';
+import RequireAuth from './components/RequireAuth';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import KependudukanPage from './pages/KependudukanPage';
 import LayananWargaPage from './pages/LayananWargaPage';
 import TransparansiPortalPage from './pages/TransparansiPortalPage';
 import KeamananAuditPage from './pages/KeamananAuditPage';
 
-function ComingSoon({ title }) {
-  return (
-    <div className="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col gap-space-sm">
-      <span className="text-[11px] uppercase tracking-wider text-primary font-bold">Modul SatuDesa</span>
-      <h1 className="text-[22px] font-semibold text-on-surface">{title}</h1>
-      <p className="text-[14px] text-on-surface-variant">Halaman ini mengikuti desain berikutnya. Navigasi kembali tersedia melalui sidebar.</p>
-    </div>
-  );
-}
-
 function App() {
   return (
     <HashRouter>
-      <AppLayout>
+      <AuthProvider>
         <Routes>
-          <Route path="/" element={<KependudukanPage />} />
-          <Route path="/Layanan-Warga" element={<LayananWargaPage />} />
-          <Route path="/Transparansi-&-Portal" element={<TransparansiPortalPage />} />
-          <Route path="/Keamanan-Audit" element={<KeamananAuditPage />} />
-          <Route path="/Keamanan-&-Audit-Trail" element={<KeamananAuditPage />} />
+          {/* Halaman publik (auth) */}
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+
+          {/* Semua halaman aplikasi WAJIB login */}
+          <Route element={<RequireAuth />}>
+            <Route path="/" element={<KependudukanPage />} />
+            <Route path="/Layanan-Warga" element={<LayananWargaPage />} />
+            <Route path="/Transparansi-&-Portal" element={<TransparansiPortalPage />} />
+            <Route path="/Keamanan-Audit" element={<KeamananAuditPage />} />
+            <Route path="/Keamanan-&-Audit-Trail" element={<KeamananAuditPage />} />
+          </Route>
+
+          {/* Rute tidak dikenal: lempar ke beranda (yang dijaga auth) */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </AppLayout>
+      </AuthProvider>
     </HashRouter>
   );
 }
